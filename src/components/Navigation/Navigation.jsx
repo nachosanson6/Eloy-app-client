@@ -28,9 +28,9 @@ const Navigation = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Link to={'/'} className='btn'>Home</Link>
 
-                            <Link className='btn'>Cuadros</Link>
+                            <Link to={'/picturesGallery'} className='btn'>Cuadros</Link>
 
                             <Link className='btn'>Esculturas</Link>
 
