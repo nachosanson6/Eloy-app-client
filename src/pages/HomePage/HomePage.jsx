@@ -10,9 +10,6 @@ const HomePage = () => {
                 <Row>
                     <Col md={{ offset: 3, span: 6 }}>
                         <h1>Home Page</h1>
-                        <PicturesForm />
-                        <SculptureForm />
-                        <JewelryForm />
                     </Col>
                 </Row>
             </Container>

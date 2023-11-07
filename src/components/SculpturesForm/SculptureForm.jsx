@@ -50,7 +50,7 @@ const SculptureForm = () => {
 
     return (
         <>
-            <h2>Nuevo cuadro</h2>
+            <h2>Nueva escultura</h2>
 
             <Form onSubmit={handleFromSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicName">
