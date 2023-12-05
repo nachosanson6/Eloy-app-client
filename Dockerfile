@@ -1,5 +1,5 @@
 FROM node:latest
-LABEL author:"Nacho"
+LABEL author="Nacho"
 EXPOSE 5173
 COPY . /var/www
 WORKDIR /var/www
