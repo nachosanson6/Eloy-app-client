@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import pictureService from "../../services/picture.services"
 import ProductList from "../../components/ProductList/ProductList"
 import Loading from "../../components/Loading/Loading"
-import { Col, Container } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 
 const PicturesGalleryPage = () => {
 
@@ -30,7 +30,7 @@ const PicturesGalleryPage = () => {
 
                 <h1>Todos los cuadros</h1>
 
-                <ProductList pictures={pictures} />
+                <ProductList element={pictures} />
 
             </Container>
         </>

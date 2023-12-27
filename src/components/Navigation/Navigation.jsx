@@ -32,7 +32,7 @@ const Navigation = () => {
 
                             <Link to={'/picturesGallery'} className='btn'>Cuadros</Link>
 
-                            <Link className='btn'>Esculturas</Link>
+                            <Link to={'/sculpturesGallery'} className='btn'>Esculturas</Link>
 
                             <Link className='btn'>Bisutería</Link>
 

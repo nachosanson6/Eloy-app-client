@@ -18,11 +18,10 @@ class SculptureService {
     }
 
     createSculpture(sculptureDataForm) {
-        console.log(sculptureDataForm)
         return this.api.post('/newSculpture', sculptureDataForm)
     }
 
-    getAllSculpture() {
+    getAllSculptures() {
         return this.api.get('/getAllSculptures')
     }
 
