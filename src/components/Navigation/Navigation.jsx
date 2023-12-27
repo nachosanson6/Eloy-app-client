@@ -34,7 +34,7 @@ const Navigation = () => {
 
                             <Link to={'/sculpturesGallery'} className='btn'>Esculturas</Link>
 
-                            <Link className='btn'>Bisutería</Link>
+                            <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link>
 
 
                             {!loggedUser && (
