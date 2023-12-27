@@ -12,7 +12,7 @@ const SculptureForm = () => {
 
     const [newSculptureForm, setNewSculptureForm] = useState({
         name: "",
-        photo1: "",
+        photo: "",
         photo2: "",
         photo3: "",
         height: "",
@@ -60,7 +60,7 @@ const SculptureForm = () => {
 
                 <Form.Group className="mb-3" controlId="image1">
                     <Form.Label>Foto 1</Form.Label>
-                    <Form.Control type="file" name='photo1' onChange={handleFileUpload} />
+                    <Form.Control type="file" name='photo' onChange={handleFileUpload} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="image2">

@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import PicturesForm from "../../components/PicturesForm/PicturesForm"
 import SculptureForm from "../../components/SculpturesForm/SculptureForm"
 import JewelryForm from "../../components/JewelryForm/JewelryForm"
+import Carousel from "../../components/Carousel/Carousel"
 
 const HomePage = () => {
     return (
@@ -10,6 +11,7 @@ const HomePage = () => {
                 <Row>
                     <Col md={{ offset: 3, span: 6 }}>
                         <h1>Home Page</h1>
+                        <Carousel />
                     </Col>
                 </Row>
             </Container>
