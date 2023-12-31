@@ -17,7 +17,7 @@ const HomePage = () => {
                 <Row>
                     <Col md={{ offset: 3, span: 6 }}>
                         <h1>Home Page</h1>
-                        <Carousel photos={images}/>
+                       
                     </Col>
                 </Row>
             </Container>
