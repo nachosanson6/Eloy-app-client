@@ -12,32 +12,36 @@ const ProductDetailsPage = () => {
     const [productDetails,setProductDetails] = useState(null)
 
 useEffect(() => {
-    loadPicturesDetails()
-    loadSculpturesDetails()
-    loadJewelryDetails()
-},[])
+    loadProductDetails()
+  }, [product_id])
 
-const loadPicturesDetails = () =>{
+const loadProductDetails = () => {
+    // Intenta cargar detalles de la colección de pictures
     pictureService
-    .getOnePicture(product_id)
-    .then(({ data }) => setProductDetails(data))
-    .catch((err) => console.log(err))
-}
-
-const loadSculpturesDetails = () =>{
-    sculptureService
-    .getOneSculpture(product_id)
-    .then(({ data }) => setProductDetails(data))
-    .catch((err) => console.log(err))
-}
-
-const loadJewelryDetails = () =>{
-    jewelryService
-    .getOneJewelry(product_id)
-    .then(({ data }) => setProductDetails(data))
-    .catch((err) => console.log(err))
-}
-
+      .getOnePicture(product_id)
+      .then(({ data }) => {
+        if (data) {
+          setProductDetails(data)
+        } else {
+          // Si no se encuentra en pictures, intenta en la colección de sculptures
+          return sculptureService.getOneSculpture(product_id)
+        }
+      })
+      .then(({ data }) => {
+        if (data && !productDetails) {
+          setProductDetails(data)
+        } else {
+          // Si no se encuentra en sculptures, intenta en la colección de jewelry
+          return jewelryService.getOneJewelry(product_id)
+        }
+      })
+      .then(({ data }) => {
+        if (data && !productDetails) {
+          setProductDetails(data)
+        }
+      })
+      .catch((err) => console.log(err))
+  }
 
 
 if (!productDetails) {
@@ -45,13 +49,12 @@ if (!productDetails) {
         <Loading />
     )
 }
-console.log(productDetails)
-console.log(productDetails.photo)
     return(
         <Container>
         <h2>Detalles del producto</h2>
         <h3>{productDetails.name}</h3>
-        <img src="{productDetails.photo}" alt="" />
+        <h3>{productDetails._id}</h3>
+        <img src={productDetails.photo} alt="" />
         </Container>
     )
 }
