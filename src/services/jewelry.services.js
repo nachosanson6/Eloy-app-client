@@ -28,6 +28,10 @@ class JewelryService {
     getOneJewelry(jewelry_id) {
         return this.api.get(`/getOneJewelry/${jewelry_id}`)
     }
+
+    deleteJewelry(jewelry_id) {
+        return this.api.get(`/deleteJewelry/${jewelry_id}`)
+    }
 }
 const jewelryService = new JewelryService()
 export default jewelryService

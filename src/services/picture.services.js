@@ -28,6 +28,10 @@ class PictureService {
     getOnePicture(picture_id) {
         return this.api.get(`/getOnePicture/${picture_id}`)
     }
+
+    deletePicture(picture_id){
+        return this.api.post(`/deletePicture/${picture_id}`)
+    }
 }
 const pictureService = new PictureService()
 export default pictureService
