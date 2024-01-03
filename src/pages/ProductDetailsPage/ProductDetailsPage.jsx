@@ -44,36 +44,35 @@ const loadProductDetails = () => {
       .catch((err) => console.log(err))
   }
 
-  const deleteProduct = () => {
-    // Intentar eliminar de la colección de pictures
-    pictureService
-      .deletePicture(product_id)
-      .then(() => {
-        // Si se elimina correctamente, navegar a la lista de productos correspondiente
-        navigate('/picturesGallery');
-      })
-      .catch((pictureError) => {
+  const deleteProduct = async () => {
+    try {
+      // Intentar eliminar de la colección de pictures
+      await pictureService.deletePicture(product_id);
+      // Si se elimina correctamente, navegar a la lista de productos correspondiente
+      navigate('/picturesGallery');
+    } catch (pictureError) {
+      console.log("Error deleting picture:", pictureError);
+  
+      try {
         // Si hay un error en la colección de pictures, intentar eliminar de la colección de sculptures
-        sculptureService
-          .deleteSculpture(product_id)
-          .then(() => {
-            // Si se elimina correctamente, navegar a la lista de productos correspondiente
-            navigate('/sculpturesGallery');
-          })
-          .catch((sculptureError) => {
-            // Si hay un error en la colección de sculptures, intentar eliminar de la colección de jewelry
-            jewelryService
-              .deleteJewelry(product_id)
-              .then(() => {
-                // Si se elimina correctamente, navegar a la lista de productos correspondiente
-                navigate('/jewelryGallery');
-              })
-              .catch((jewelryError) => {
-                // Si hay un error en todas las colecciones, manejar el error o mostrar un mensaje al usuario
-                console.log("Error deleting product:", jewelryError);
-              });
-          });
-      });
+        await sculptureService.deleteSculpture(product_id);
+        // Si se elimina correctamente, navegar a la lista de productos correspondiente
+        navigate('/sculpturesGallery');
+      } catch (sculptureError) {
+        console.log("Error deleting sculpture:", sculptureError);
+  
+        try {
+          // Si hay un error en la colección de sculptures, intentar eliminar de la colección de jewelry
+          await jewelryService.deleteJewelry(product_id);
+          // Si se elimina correctamente, navegar a la lista de productos correspondiente
+          navigate('/jewelryGallery');
+        } catch (jewelryError) {
+          // Si hay un error en todas las colecciones, manejar el error o mostrar un mensaje al usuario
+          console.log("Error deleting product:", jewelryError);
+          // Aquí puedes mostrar un mensaje de error al usuario si es necesario
+        }
+      }
+    }
   };
 
 
