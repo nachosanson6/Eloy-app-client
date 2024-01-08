@@ -1,11 +1,11 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import pictureService from '../../services/picture.services'
 import uploadServices from '../../services/upload.services'
 import MaterialsForm from '../ColorsForm/ColorsForm'
 import sculptureService from '../../services/sculpture.services'
 import MaterialForm from '../SculptureMaterialsForm/SculptureMaterialsForm'
-
 
 
 const SculptureForm = () => {
@@ -21,6 +21,8 @@ const SculptureForm = () => {
         materials: []
 
     })
+    const navigate = useNavigate()
+
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -28,9 +30,12 @@ const SculptureForm = () => {
     }
 
     const handleFromSubmit = e => {
+        e.preventDefault();
         sculptureService
             .createSculpture(newSculptureForm)
-            .then(() => console.log('cambiar esto'))
+            .then(() => {
+                navigate('/sculpturesGallery')
+            })
             .catch(err => console.log(err))
     }
 
@@ -44,6 +49,7 @@ const SculptureForm = () => {
             .uploadimage(formData)
             .then(({ data }) => {
                 setNewSculptureForm({ ...newSculptureForm, [name]: data.cloudinary_url })
+                
             })
             .catch(err => console.log(err))
     }

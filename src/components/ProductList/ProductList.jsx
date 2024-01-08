@@ -7,14 +7,12 @@ const ProductList = ({ element }) => {
     return (
         <Row>
             {
-                element.map(elm => {
+                element.map((elm, index) => {
                     return (
-                        <>
-                            <Col lg={{ span: 3 }} md={{ span: 6 }} sm={{ span: 10 }} >
-                                <ProductCard {...elm} />
+                            <Col key={index} lg={{ span: 3 }} md={{ span: 6 }} sm={{ span: 10 }} >
+                                <ProductCard  {...elm} />
                             </Col >
 
-                        </>
                     )
                 })
             }

@@ -30,7 +30,7 @@ class JewelryService {
     }
 
     deleteJewelry(jewelry_id) {
-        return this.api.get(`/deleteJewelry/${jewelry_id}`)
+        return this.api.post(`/deleteJewelry/${jewelry_id}`)
     }
 }
 const jewelryService = new JewelryService()

@@ -30,7 +30,7 @@ class SculptureService {
     }
 
     deleteSculpture(sculpture_id) {
-        return this.api.get(`/deleteSculpture/${sculpture_id}`)
+        return this.api.post(`/deleteSculpture/${sculpture_id}`)
     }
 }
 const sculptureService = new SculptureService()

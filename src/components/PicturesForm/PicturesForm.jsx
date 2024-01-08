@@ -18,6 +18,7 @@ const PicturesForm = () => {
 
     })
 
+    
     const handleInputChange = e => {
         const { value, name } = e.target
         setNewPictureForm({ ...newPictureForm, [name]: value })

@@ -16,6 +16,8 @@ const JewelryForm = () => {
 
     })
 
+    
+
     const handleInputChange = e => {
         const { value, name } = e.target
         setNewJewelryForm({ ...newJewelryForm, [name]: value })
