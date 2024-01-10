@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import pictureService from '../../services/picture.services'
 import uploadServices from '../../services/upload.services'
@@ -6,7 +7,7 @@ import ColorsForm from '../ColorsForm/ColorsForm'
 
 
 
-const PicturesForm = () => {
+const PicturesForm = ({ closeLogin }) => {
 
     const [newPictureForm, setNewPictureForm] = useState({
         name: "",
@@ -18,16 +19,21 @@ const PicturesForm = () => {
 
     })
 
-    
+    const navigate = useNavigate()
+
     const handleInputChange = e => {
         const { value, name } = e.target
         setNewPictureForm({ ...newPictureForm, [name]: value })
     }
 
     const handleFromSubmit = e => {
+        e.preventDefault();
         pictureService
             .createPicture(newPictureForm)
-            .then(() => console.log('cambiar esto'))
+            .then(() => {
+                closeLogin()
+                navigate('/picturesGallery')
+              })
             .catch(err => console.log(err))
     }
 

@@ -8,7 +8,7 @@ import sculptureService from '../../services/sculpture.services'
 import MaterialForm from '../SculptureMaterialsForm/SculptureMaterialsForm'
 
 
-const SculptureForm = () => {
+const SculptureForm = ({ closeLogin }) => {
 
     const [newSculptureForm, setNewSculptureForm] = useState({
         name: "",
@@ -34,9 +34,12 @@ const SculptureForm = () => {
         sculptureService
             .createSculpture(newSculptureForm)
             .then(() => {
+                closeLogin()
                 navigate('/sculpturesGallery')
-            })
+              })
+            
             .catch(err => console.log(err))
+            
     }
 
     const handleFileUpload = (e) => {

@@ -44,21 +44,24 @@ const loadProductDetails = () => {
   const deleteProduct = () => {
     pictureService.deletePicture(product_id)
       .then((response) => {
-        if (response.status === 200) {
-          navigate('/picturesGallery');;
+        if (response.status === 202 && productDetails.product==="Pictures") {
+          console.log(productDetails)
+          navigate('/picturesGallery');
         } else {
           return sculptureService.deleteSculpture(product_id);
         }
       })
       .then((response) => {
-        if (response.status === 200 && !productDetails) {
+        if (response.status === 202 && productDetails.product==="Sculptures") {
+          console.log("estrando en la coleccion de esculturas")
           navigate('/sculpturesGallery');
         } else {
           return jewelryService.deleteJewelry(product_id);
         }
       })
       .then((response) => {
-        if (response.status === 200 && !productDetails) {
+        if (response.status === 202 && productDetails.product==="Jewelry") {
+          console.log("estrando en la coleccion de bisuteria", response)
           navigate('/jewelryGallery');
         }
       })

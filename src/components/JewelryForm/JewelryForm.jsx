@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import uploadServices from '../../services/upload.services'
 import jewelryService from '../../services/jewelry.services'
@@ -6,7 +7,7 @@ import MaterialForm from '../JewelryMaterialForm/JewelryMaterialForm'
 
 
 
-const JewelryForm = () => {
+const JewelryForm = ({ closeLogin }) => {
 
     const [newJewelryForm, setNewJewelryForm] = useState({
         name: "",
@@ -16,7 +17,8 @@ const JewelryForm = () => {
 
     })
 
-    
+    const navigate = useNavigate()
+
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -24,9 +26,13 @@ const JewelryForm = () => {
     }
 
     const handleFromSubmit = e => {
+        e.preventDefault();
         jewelryService
             .createJewelry(newJewelryForm)
-            .then(() => console.log('cambiar esto'))
+            .then(() => {
+                closeLogin()
+                navigate('/jewelryGallery')
+              })
             .catch(err => console.log(err))
     }
 

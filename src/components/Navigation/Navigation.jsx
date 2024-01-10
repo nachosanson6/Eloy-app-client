@@ -72,13 +72,13 @@ const Navigation = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {type === "picture" &&
-                        <PicturesForm />
+                        <PicturesForm closeLogin={closeLogin}/>
                     }
                     {type === "sculpture" &&
-                        <SculptureForm />
+                        <SculptureForm closeLogin={closeLogin}/>
                     }
                     {type === "jewelry" &&
-                        <JewelryForm />
+                        <JewelryForm closeLogin={closeLogin}/>
                     }
                     {type === "login" &&
                         <LoginForm closeLogin={closeLogin} />
