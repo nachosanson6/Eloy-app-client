@@ -21,7 +21,7 @@
  
 Eloy-app is a web application showcasing artistic creations, which include paintings, sculptures, and jewelry. The platform provides visitors with an engaging visual experience to explore and appreciate the various works of art.
 
-## Key Features
+### Key Features
 
 - **Home Page with Carousel:** The homepage features a carousel showcasing highlighted pieces created by my father. This section gives visitors a visual preview of some of the most notable artworks.
 
