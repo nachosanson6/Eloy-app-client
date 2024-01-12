@@ -16,6 +16,8 @@
 8. [Contact](#contact)
 
 [![Back-end Repository](https://img.shields.io/badge/Back--end-Repository-blue?style=for-the-badge&logo=github)](https://github.com/nachosanson6/Eloy-app-server)
+
+ ## Description
  
 Eloy-app is a web application showcasing artistic creations, which include paintings, sculptures, and jewelry. The platform provides visitors with an engaging visual experience to explore and appreciate the various works of art.
 
@@ -102,10 +104,10 @@ The file structure in the Jamlink front-end is organized as follows:
 |   |-- utils/
 |   |-- App.css
 |   |-- App.jsx
-|   |-- index.css
 |   |-- main.jsx
 |-- .eslintrc.cjs
 |-- .gitignore
+|-- Dockerfile
 |-- README.md
 |-- index.html
 |-- package-lock.json
@@ -123,7 +125,6 @@ The file structure in the Jamlink front-end is organized as follows:
   - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Style sheet language for styling the user interface.
   - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Programming language for client-side logic.
   - [Bootstrap](https://getbootstrap.com/) - CSS framework for fast and responsive web development.
-  - [Google Autocomplete](https://developers.google.com/maps/documentation/javascript/places-autocomplete) - Google Maps Autocomplete component.
 
 - **Tools and Utilities:**
   - [GitHub Actions](https://github.com/features/actions) - For continuous integration and automatic deployment.
@@ -135,15 +136,12 @@ The file structure in the Jamlink front-end is organized as follows:
 |                     |                      |           |
 |         URL         |      Description     | Protected |
 | /                   | Index page           |           |
-| /events             | Events gallery page  |           |
-| /events/details/:id | Events details page  | ✔         |
-| /event/create       | New event from page  | ✔         |
-| /event/edit/:id     | Edit event form page | ✔         |
+| /picturesGallery    | Events gallery page  |           |
+| /sculpturesGallery  | Events details page  |           |
+| /jewelryGallery     | New event from page  |           |
+| /productDetails/:id | Edit event form page |           |
 | /signup             | Signup page          |           |
 | /login              | Login page           |           |
-| /user/profile/:id   | User profile page    | ✔         |
-| /user/community     | User gallery page    | ✔         |
-| /user/edit/:id      | Edit user page       | ✔         |
 
 ## License
 
@@ -157,7 +155,6 @@ This project uses various technologies and resources, each with its respective l
 - **CSS**: [MIT License](https://opensource.org/licenses/MIT)
 - **JavaScript**: [MIT License](https://opensource.org/licenses/MIT)
 - **Bootstrap**: [MIT License](https://opensource.org/licenses/MIT)
-- **Google Autocomplete**: [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms)
 
 ### Tools and Utilities
 
