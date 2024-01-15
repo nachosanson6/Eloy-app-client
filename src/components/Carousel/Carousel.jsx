@@ -1,42 +1,49 @@
-import React, { useState } from 'react';
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
-import './Carousel.css';
+import { useEffect, useState } from "react";
+import { Carousel } from "react-bootstrap";
+import pictureService from "../../services/picture.services";
+import Loading from "../Loading/Loading";
 
-const Carousel = ({ photos }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const CarouselComponent = () => {
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);
-  };
+  const [pictures, setPictures] = useState(null)
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? photos.length - 1 : prevIndex - 1
-    );
-  };
+    useEffect(() => {
+        loadPictures()
+    }, [])
 
+    const loadPictures = () => {
+        pictureService
+            .getAllPictures()
+            .then(({ data }) => setPictures(data))
+            .catch(err => console.log(err))
+    }
+    console.log(pictures)
 
-
-  return (
-    <div className="carousel">
-      <button onClick={prevSlide}>Previous</button>
-      <div className="slide-container">
-        {photos.map((image, index) => (
-            <>
-          <div
-            key={index}
-            className={`slide ${index === currentIndex ? 'active' : ''}`}
-          >
-            <img src={image}  alt={`Slide ${index + 1}`} />
+    if (!pictures) {
+      return (
+          <Loading />
+      )
+  }
+  return(
+    <div >
+    <Carousel style={{height:"400px",width:"500px",backgroundColor:"#f0ead6"}}>
+      {pictures.map((picture, index) => (
+        <Carousel.Item key={index} style={{height:"400px",width:"500px",}}>
+          <div style={{backgroundImage:`url(${picture.photo})`,
+          height: "100%",
+          width: "100%",
+          backgroundSize:"contain",
+          backgroundPosition:"center",
+          backgroundRepeat:"no-repeat"}}>
           </div>
-          </>
-        ))}
-        
-      </div>
-      <button onClick={nextSlide}>Next</button>
+          <Carousel.Caption>
+            <h3>{picture.name}</h3>
+            <p>{picture.height}x{picture.width}</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      ))}
+    </Carousel>
     </div>
-  );
-};
-
-export default Carousel;
+  )
+}
+export default CarouselComponent

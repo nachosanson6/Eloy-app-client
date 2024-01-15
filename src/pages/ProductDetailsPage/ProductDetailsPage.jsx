@@ -17,6 +17,9 @@ useEffect(() => {
   }, [product_id])
 
 const loadProductDetails = () => {
+
+  // convertir todo este codigo para que la busqueda se haga en el back-end
+
     pictureService
       .getOnePicture(product_id)
       .then(({ data }) => {
