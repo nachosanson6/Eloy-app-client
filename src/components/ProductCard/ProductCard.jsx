@@ -7,7 +7,7 @@ const ProductCard = ({ name, photo, _id }) => {
         <>
         
             <Link to={`/productDetails/${_id}`}>
-                <img className="picturePhoto" src={photo} alt="" />
+                <img className="picturePhoto"  src={photo} alt="" />
             </Link>
         </>
     )

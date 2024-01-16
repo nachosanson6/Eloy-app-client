@@ -11,8 +11,9 @@ const HomePage = () => {
                 <Row>
                     <Col md={{ offset: 3, span: 6 }}>
                         <h1>Home Page</h1>
-                        <CarouselComponent/>
-                       
+                        <div style={{paddingTop:"20px"}}>
+                        <CarouselComponent />
+                        </div>
                     </Col>
                 </Row>
             </Container>
