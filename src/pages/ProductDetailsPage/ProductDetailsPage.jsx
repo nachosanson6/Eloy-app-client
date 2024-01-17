@@ -5,20 +5,23 @@ import { useNavigate, useParams } from "react-router-dom"
 import Loading from "../../components/Loading/Loading"
 import sculptureService from "../../services/sculpture.services"
 import jewelryService from "../../services/jewelry.services"
+import "./ProductDetailsPage.css"
+import CarouselComponent from "../../components/Carousel/Carousel"
+import ProductInformation from "../../components/ProductInformation/ProductInformation"
 
 const ProductDetailsPage = () => {
 
-    const {product_id}  = useParams()
-    const [productDetails,setProductDetails] = useState(null)
-    const navigate = useNavigate()
+  const { product_id } = useParams()
+  const [productDetails, setProductDetails] = useState(null)
+  const navigate = useNavigate()
 
-useEffect(() => {
+  useEffect(() => {
     loadProductDetails()
   }, [product_id])
 
-const loadProductDetails = () => {
+  const loadProductDetails = () => {
 
-  // convertir todo este codigo para que la busqueda se haga en el back-end
+    // convertir todo este codigo para que la busqueda se haga en el back-end
 
     pictureService
       .getOnePicture(product_id)
@@ -47,7 +50,7 @@ const loadProductDetails = () => {
   const deleteProduct = () => {
     pictureService.deletePicture(product_id)
       .then((response) => {
-        if (response.status === 202 && productDetails.product==="Pictures") {
+        if (response.status === 202 && productDetails.product === "Pictures") {
           console.log(productDetails)
           navigate('/picturesGallery');
         } else {
@@ -55,7 +58,7 @@ const loadProductDetails = () => {
         }
       })
       .then((response) => {
-        if (response.status === 202 && productDetails.product==="Sculptures") {
+        if (response.status === 202 && productDetails.product === "Sculptures") {
           console.log("estrando en la coleccion de esculturas")
           navigate('/sculpturesGallery');
         } else {
@@ -63,7 +66,7 @@ const loadProductDetails = () => {
         }
       })
       .then((response) => {
-        if (response.status === 202 && productDetails.product==="Jewelry") {
+        if (response.status === 202 && productDetails.product === "Jewelry") {
           console.log("estrando en la coleccion de bisuteria", response)
           navigate('/jewelryGallery');
         }
@@ -71,19 +74,34 @@ const loadProductDetails = () => {
       .catch((err) => console.log(err));
   };
 
-if (!productDetails) {
-    return (
-        <Loading />
-    )
-}
-    return(
-        <Container>
-        <h2>Detalles del producto</h2>
-        <h3>{productDetails.name}</h3>
-        <img src={productDetails.photo} alt="" />
 
-        <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
-        </Container>
+  if (!productDetails) {
+    return (
+      <Loading />
     )
+  }
+  const images = [productDetails.photo, productDetails.photo2, productDetails.photo3]
+  return (
+    <Container>
+      <div className="allInformation">
+        <div className="carousel" >
+          {productDetails.photo2 && (
+            <>
+              <CarouselComponent photos={images} />
+            </>
+          )}
+          {!productDetails.photo2 && (
+            <>
+              <img className="productImage" src={productDetails.photo} alt="" />
+            </>
+          )}
+        </div>
+        <div className="productInformation" >
+          <ProductInformation productDetails={productDetails} />
+        </div>
+      </div>
+      <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
+    </Container>
+  )
 }
 export default ProductDetailsPage

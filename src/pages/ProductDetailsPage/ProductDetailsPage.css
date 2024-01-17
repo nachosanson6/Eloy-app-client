@@ -1,0 +1,19 @@
+.allInformation {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
+}
+
+.carousel {
+    max-width: 40vw;
+}
+
+.productInformation {
+    max-width: 30vw;
+    height: 50vh;
+}
+
+.productImage {
+    max-height: 70vh;
+    width: auto;
+}

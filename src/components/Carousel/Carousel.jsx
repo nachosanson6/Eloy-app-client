@@ -1,35 +1,31 @@
 import { useEffect, useState } from "react";
 import { Carousel, Col, Row } from "react-bootstrap";
-import pictureService from "../../services/picture.services";
 import Loading from "../Loading/Loading";
 import allProductsService from "../../services/allProducts.services";
+import "./Carousel.css"
 
-const CarouselComponent = () => {
+const CarouselComponent = ({photos}) => {
 
-  const [photos, setPhotos] = useState(null)
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const showImage = (index) => {
+    setCurrentIndex(index);
+  };
 
-    useEffect(() => {
-      loadPhotos()
-    }, [])
+  const nextImage = () => {
+    setCurrentIndex((currentIndex + 1) % photos.length);
+  };
 
-    const loadPhotos = async () => {
-      try {
-        const { data } = await allProductsService.getAllPhotos();
-        const shuffledPhotos = data.sort(() => Math.random() - 0.5);
-        setPhotos(shuffledPhotos);
-      } catch (error) {
-        console.error("Error loading photos:", error);
-      }
-    };
-        // allProductsService
-        //     .getAllPhotos()
-        //     .then(({ data }) => setPhotos(data))
-        //     .catch(err => console.log(err))
-    
-    const handleThumbnailClick = (index) => {
-    setActiveIndex(index);
-        };
+  const prevImage = () => {
+    setCurrentIndex((currentIndex - 1 + photos.length) % photos.length);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextImage();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
     if (!photos) {
       return (
@@ -37,49 +33,26 @@ const CarouselComponent = () => {
       )
   }
   return(
-    <div>
-      
-          <Carousel style={{ height: "400px", width: "500px" }} activeIndex={activeIndex} onSelect={(selectedIndex) => setActiveIndex(selectedIndex)} style={{ height: "400px", backgroundColor: "#f0ead6" }} interval={null} indicators={false}>
-            {photos.map((picture, index) => (
-              <Carousel.Item key={index} style={{ height: "400px", width: "500px" }}>
-                <img
-                  src={picture}
-                  alt={picture}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => window.open(picture.url, "_blank")}
-                />
-                <Carousel.Caption>
-                 
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-       
-      <Row className="mt-3">
-        {photos.map((picture, index) => (
-          <Col key={index} xs={2} md={1} className="mx-auto">
-            <div
-              className={`thumbnail ${index === activeIndex ? "active" : ""}`}
-              style={{
-                backgroundImage: `url(${picture})`,
-                height: "50px",
-                width: "50px",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                cursor: "pointer",
-              }}
-              onClick={() => handleThumbnailClick(index)}
-            ></div>
-          </Col>
+    <div id="carousel-container" >
+      <div id="nav-container">
+      <button id="prev-btn" className="nav-btn" onClick={prevImage}>&lt;</button>
+     
+    <img id="main-image" src={photos[currentIndex]} alt={`Imagen ${currentIndex + 1}`} />
+    <button id="next-btn" className="nav-btn" onClick={nextImage}>&gt;</button>
+      </div>
+    <div id="thumbnail-container">
+        {photos.map((image, i) => (
+          <div
+            key={i}
+            className={`thumbnail ${i === currentIndex ? 'active' : ''}`}
+            onClick={() => showImage(i)}
+          >
+            <img src={image} alt={`Thumbnail ${i + 1}`} />
+          </div>
         ))}
-      </Row>
-    </div>
+      </div>
+      
+  </div>
   )
 }
 export default CarouselComponent
