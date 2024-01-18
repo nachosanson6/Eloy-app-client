@@ -67,3 +67,10 @@
   max-width: 50px;
   height: auto;
 }
+
+#main-image.zoomed {
+  transform: scale(2);  
+  transition: transform 0.3s ease-in-out;
+  max-height: 100vh;
+
+}
