@@ -20,7 +20,8 @@ const Navigation = () => {
         navigate('/')
     }
     const url = window.location.href;
-    console.log(url)
+    const apiUrl = import.meta.env.VITE_FRONTEND_URL
+
 
     return (
         <>
@@ -39,7 +40,7 @@ const Navigation = () => {
                             <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link>
 
 
-                            {(!loggedUser && url.includes('https://eloy-app-client.vercel.app/admin')) && (
+                            {(!loggedUser && url.includes(`${apiUrl}/admin`)) && (
                                 <Button variant="dark" className="nav-link" onClick={() => { setShowModal(true); setType("login") }}>
                                     Log In
                                 </Button>
