@@ -45,6 +45,7 @@ const Navigation = () => {
                                     Log In
                                 </Button>
                             )}
+
                             {loggedUser && (
                                 <>
                                     <Button variant="dark" className="nav-link" onClick={logout}>
