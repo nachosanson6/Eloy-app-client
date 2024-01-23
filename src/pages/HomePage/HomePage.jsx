@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import CarouselComponent from "../../components/Carousel/Carousel"
 import { useEffect, useState } from "react";
 import allProductsService from "../../services/allProducts.services";
+import Loading from "../../components/Loading/Loading";
 
 const HomePage = () => {
 
@@ -24,6 +25,11 @@ const HomePage = () => {
   //     .getAllPhotos()
   //     .then(({ data }) => setPhotos(data))
   //     .catch(err => console.log(err))
+  if (!photos) {
+    return (
+      <Loading />
+    )
+  }
   return (
     <>
       <Container>

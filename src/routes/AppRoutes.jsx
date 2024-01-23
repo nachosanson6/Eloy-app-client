@@ -11,6 +11,7 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path={'/'} element={<HomePage />} />
+
             <Route path={'/picturesGallery'} element={<PicturesGalleryPage />} />
             <Route path={'/sculpturesGallery'} element={<SculpturesGalleryPage />} />
             <Route path={'/jewelryGallery'} element={<JewelryGalleryPage />} />

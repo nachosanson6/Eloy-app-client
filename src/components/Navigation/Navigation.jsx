@@ -19,6 +19,8 @@ const Navigation = () => {
         setShowModal(false)
         navigate('/')
     }
+    const url = window.location.href;
+    console.log(url)
 
     return (
         <>
@@ -37,7 +39,7 @@ const Navigation = () => {
                             <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link>
 
 
-                            {!loggedUser && (
+                            {(!loggedUser && url.includes('localhost:5173/admin')) && (
                                 <Button variant="dark" className="nav-link" onClick={() => { setShowModal(true); setType("login") }}>
                                     Log In
                                 </Button>
@@ -72,13 +74,13 @@ const Navigation = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {type === "picture" &&
-                        <PicturesForm closeLogin={closeLogin}/>
+                        <PicturesForm closeLogin={closeLogin} />
                     }
                     {type === "sculpture" &&
-                        <SculptureForm closeLogin={closeLogin}/>
+                        <SculptureForm closeLogin={closeLogin} />
                     }
                     {type === "jewelry" &&
-                        <JewelryForm closeLogin={closeLogin}/>
+                        <JewelryForm closeLogin={closeLogin} />
                     }
                     {type === "login" &&
                         <LoginForm closeLogin={closeLogin} />
