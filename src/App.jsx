@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navigation />
-      <div className='pb-5'>
+      <div className='pt-5 '>
         <AppRoutes />
       </div>
       <Footer />

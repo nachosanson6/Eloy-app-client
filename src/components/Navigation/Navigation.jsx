@@ -6,6 +6,7 @@ import JewelryForm from '../JewelryForm/JewelryForm'
 import LoginForm from '../LoginForm/LoginForm'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
+import "./Navigation.css"
 
 const Navigation = () => {
 
@@ -25,7 +26,7 @@ const Navigation = () => {
 
     return (
         <>
-            <Navbar expand="lg" className="bg-body-tertiary">
+            <Navbar expand="lg" className="bg-body-tertiary" id='navigation'>
                 <Container>
                     <Navbar.Brand href="#home">Eloy-app</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
