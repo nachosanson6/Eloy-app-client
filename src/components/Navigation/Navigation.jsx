@@ -39,7 +39,7 @@ const Navigation = () => {
                             <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link>
 
 
-                            {(!loggedUser && url.includes('localhost:5173/admin')) && (
+                            {(!loggedUser && url.includes('https://eloy-app-client.vercel.app/admin')) && (
                                 <Button variant="dark" className="nav-link" onClick={() => { setShowModal(true); setType("login") }}>
                                     Log In
                                 </Button>
