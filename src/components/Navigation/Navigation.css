@@ -2,4 +2,6 @@
     position: fixed;
     width: 100vw;
     margin-bottom: 3rem;
+    z-index: 100;
+    transition: background-color 0.5s ease-in-out;
 }

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Container, Navbar, Nav, NavDropdown, Modal, Button } from 'react-bootstrap'
 import PicturesForm from '../PicturesForm/PicturesForm'
 import SculptureForm from '../SculpturesForm/SculptureForm'
@@ -8,11 +8,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import "./Navigation.css"
 
+
 const Navigation = () => {
 
     const [showModal, setShowModal] = useState(false)
     const [type, setType] = useState()
     const { logout, loggedUser } = useContext(AuthContext)
+    const [isNavbarTransparent, setIsNavigationTransparent] = useState(false)
 
     const navigate = useNavigate()
 
@@ -23,12 +25,31 @@ const Navigation = () => {
     const url = window.location.href;
     const apiUrl = import.meta.env.VITE_FRONTEND_URL
 
+    const handleScroll = () => {
+        setIsNavigationTransparent(window.scrollY > 50)
+    }
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        // Agregamos el evento de scroll cuando el componente está montado
+        window.addEventListener('scroll', handleScroll);
+
+        // Limpiamos el evento cuando el componente se desmonta
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
 
     return (
         <>
-            <Navbar expand="lg" className="bg-body-tertiary" id='navigation'>
+            <Navbar expand="lg" id='navigation'
+                style={{ backgroundColor: isNavbarTransparent ? 'rgba(255, 255, 255, 0.6)' : 'white', padding: '10px' }}>
                 <Container>
-                    <Navbar.Brand href="#home">Eloy-app</Navbar.Brand>
+                    <Navbar.Brand href="#home" onClick={scrollToTop}>Eloy-app</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
