@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Button, Container } from "react-bootstrap"
 import pictureService from "../../services/picture.services"
 import { useNavigate, useParams } from "react-router-dom"
@@ -8,11 +8,13 @@ import jewelryService from "../../services/jewelry.services"
 import "./ProductDetailsPage.css"
 import CarouselComponent from "../../components/Carousel/Carousel"
 import ProductInformation from "../../components/ProductInformation/ProductInformation"
+import { AuthContext } from "../../contexts/auth.context"
 
 const ProductDetailsPage = () => {
 
   const { product_id } = useParams()
   const [productDetails, setProductDetails] = useState(null)
+  const {loggedUser} = useContext(AuthContext)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -100,7 +102,9 @@ const ProductDetailsPage = () => {
           <ProductInformation productDetails={productDetails} />
         </div>
       </div>
+      {loggedUser &&(
       <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
+      )}
     </Container>
   )
 }
