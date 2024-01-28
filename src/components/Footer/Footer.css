@@ -1,12 +1,49 @@
 footer {
-    margin-top: 200px;
-    background-color: #212529;
-    color: white;
-    font-size: .9em;
-    padding: 10px;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    left: 0;
+    display: flex;
+    width: 100vw;
+    padding: var(--Spacing-s40px, 40px) var(--Layout-General-Margin, 120px);
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid rgba(188, 156, 46, 0.00);
+    background: var(--Colors-Black, #222);
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+}
+
+.info-item {
+    display: flex;
+    flex-direction: row;
+    color: var(--Colors-White, #FFF);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Familjen Grotesk";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.contact-info {
+    margin: 3px;
+    padding-left: 5px;
+}
+
+.rights {
+    color: var(--Colors-Grey1, #A1A1A1);
+    font-family: "Familjen Grotesk";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+@media screen and (max-width: 767px) {
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

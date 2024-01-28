@@ -7,6 +7,7 @@ import LoginForm from '../LoginForm/LoginForm'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import "./Navigation.css"
+import logoLight from "./../../../public/images/Logotipo Light.svg"
 
 
 const Navigation = () => {
@@ -49,7 +50,10 @@ const Navigation = () => {
             <Navbar expand="lg" id='navigation'
                 style={{ backgroundColor: isNavbarTransparent ? 'rgba(255, 255, 255, 0.6)' : 'white', padding: '10px' }}>
                 <Container>
-                    <Navbar.Brand href="#home" onClick={scrollToTop}>Eloy-app</Navbar.Brand>
+                    <Navbar.Brand href="#home" onClick={scrollToTop}>
+                        <img className='logoLight'
+                            src={logoLight}
+                        /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
