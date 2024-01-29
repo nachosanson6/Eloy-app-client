@@ -1,7 +1,7 @@
 import "./Footer.css"
-import logoDark from "./../../../public/images/Logotipo Dark.svg"
-import envelope from "./../../../public/images/envelope-alt.svg"
-import phone from "./../../../public/images/phone.svg"
+import logoDark from "./../../../src/images/Logotipo Dark.svg"
+import envelope from "./../../../src/images/envelope-alt.svg"
+import phone from "./../../../src/images/phone.svg"
 const Footer = () => {
     return (
         <footer>

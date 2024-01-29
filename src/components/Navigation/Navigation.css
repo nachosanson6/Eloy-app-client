@@ -4,6 +4,10 @@
     margin-bottom: 3rem;
     z-index: 100;
     transition: background-color 0.5s ease-in-out;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to right, #BC9C2E00, #BC9C2E, #BC9C2E00);
+    border-image-slice: 1;
+
 }
 
 .logoLight {

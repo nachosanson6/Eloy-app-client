@@ -7,7 +7,7 @@ import LoginForm from '../LoginForm/LoginForm'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import "./Navigation.css"
-import logoLight from "./../../../public/images/Logotipo Light.svg"
+import logoLight from "./../../../src/images/Logotipo Light.svg"
 
 
 const Navigation = () => {
@@ -49,50 +49,46 @@ const Navigation = () => {
         <>
             <Navbar expand="lg" id='navigation'
                 style={{ backgroundColor: isNavbarTransparent ? 'rgba(255, 255, 255, 0.6)' : 'white', padding: '10px' }}>
-                <Container>
+                <Container >
                     <Navbar.Brand href="#home" onClick={scrollToTop}>
                         <img className='logoLight'
                             src={logoLight}
                         /></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Link to={'/'} className='btn'>Home</Link>
+                    <Nav className="ms-auto">
+                        <div className="element">
+                            <Link to={'/picturesGallery'} className='btn'>Galería</Link>
 
-                            <Link to={'/picturesGallery'} className='btn'>Cuadros</Link>
+                            <Link to={'/sculpturesGallery'} className='btn'>El artista</Link>
 
-                            <Link to={'/sculpturesGallery'} className='btn'>Esculturas</Link>
+                            {/* <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link> */}
+                        </div>
 
-                            <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link>
+                        {(!loggedUser && url.includes(`${apiUrl}/admin`)) && (
+                            <Button variant="dark" className="nav-link" onClick={() => { setShowModal(true); setType("login") }}>
+                                Log In
+                            </Button>
+                        )}
 
-
-                            {(!loggedUser && url.includes(`${apiUrl}/admin`)) && (
-                                <Button variant="dark" className="nav-link" onClick={() => { setShowModal(true); setType("login") }}>
-                                    Log In
+                        {loggedUser && (
+                            <>
+                                <Button variant="dark" className="nav-link" onClick={logout}>
+                                    Log Out
                                 </Button>
-                            )}
 
-                            {loggedUser && (
-                                <>
-                                    <Button variant="dark" className="nav-link" onClick={logout}>
-                                        Log Out
+                                <NavDropdown title="Añadir" id="basic-nav-dropdown">
+                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("picture") }}>
+                                        Nuevo cuadro
                                     </Button>
-
-                                    <NavDropdown title="Añadir" id="basic-nav-dropdown">
-                                        <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("picture") }}>
-                                            Nuevo cuadro
-                                        </Button>
-                                        <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("sculpture") }}>
-                                            Nueva escultura
-                                        </Button>
-                                        <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("jewelry") }}>
-                                            Nueva bisutería
-                                        </Button>
-                                    </NavDropdown>
-                                </>
-                            )}
-                        </Nav>
-                    </Navbar.Collapse>
+                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("sculpture") }}>
+                                        Nueva escultura
+                                    </Button>
+                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("jewelry") }}>
+                                        Nueva bisutería
+                                    </Button>
+                                </NavDropdown>
+                            </>
+                        )}
+                    </Nav>
                 </Container>
             </Navbar>
 
