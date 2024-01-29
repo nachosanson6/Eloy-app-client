@@ -41,6 +41,11 @@
     justify-content: center;
     align-items: flex-start;
     gap: 1rem;
+
+}
+
+.claimButtons a {
+    text-decoration: none;
 }
 
 .claim button {
@@ -58,4 +63,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-decoration: none;
+}
+
+.claim Link {
+    text-decoration: none;
 }

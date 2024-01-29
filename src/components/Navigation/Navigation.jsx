@@ -51,9 +51,12 @@ const Navigation = () => {
                 style={{ backgroundColor: isNavbarTransparent ? 'rgba(255, 255, 255, 0.6)' : 'white', padding: '10px' }}>
                 <Container >
                     <Navbar.Brand href="#home" onClick={scrollToTop}>
-                        <img className='logoLight'
-                            src={logoLight}
-                        /></Navbar.Brand>
+                        <Link to={'/'}>
+                            <img className='logoLight'
+                                src={logoLight}
+                            />
+                        </Link>
+                    </Navbar.Brand>
                     <Nav className="ms-auto">
                         <div className="element">
                             <Link to={'/picturesGallery'} className='btn'>Galería</Link>
