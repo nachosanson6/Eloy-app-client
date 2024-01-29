@@ -3,7 +3,6 @@ footer {
     width: 100vw;
     padding: var(--Spacing-s40px, 40px) var(--Layout-General-Margin, 120px);
     justify-content: space-between;
-    align-items: flex-end;
     border-bottom: 2px solid rgba(188, 156, 46, 0.00);
     background: var(--Colors-Black, #222);
 }
@@ -39,11 +38,24 @@ footer {
     font-style: normal;
     font-weight: 400;
     line-height: 1.5rem;
+    display: flex;
+    align-items: flex-end;
+
 }
 
 @media screen and (max-width: 767px) {
     footer {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: start;
+        padding: 0%;
+        padding-top: 10%;
+        display: flex;
+        align-items: center;
+    }
+
+
+
+    .rights {
+        padding-top: 1%;
     }
 }

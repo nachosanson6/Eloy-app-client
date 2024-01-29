@@ -5,17 +5,19 @@ import phone from "./../../../public/images/phone.svg"
 const Footer = () => {
     return (
         <footer>
-            <div className="information">
-                <div className="info-item">
-                    <img src={logoDark} alt="Logo" />
-                </div>
-                <div className="info-item">
-                    <img src={phone} alt="Phone" />
-                    <p className="contact-info">655543327</p>
-                </div>
-                <div className="info-item">
-                    <img src={envelope} alt="Envelope" />
-                    <p className="contact-info">elosankau@hotmail.es</p>
+            <div className="footerComponent">
+                <div className="information">
+                    <div className="info-item">
+                        <img src={logoDark} alt="Logo" />
+                    </div>
+                    <div className="info-item">
+                        <img src={phone} alt="Phone" />
+                        <p className="contact-info">655543327</p>
+                    </div>
+                    <div className="info-item">
+                        <img src={envelope} alt="Envelope" />
+                        <p className="contact-info">elosankau@hotmail.es</p>
+                    </div>
                 </div>
             </div>
             <div className="rights">
