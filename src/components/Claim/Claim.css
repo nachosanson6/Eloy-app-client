@@ -46,6 +46,7 @@
 
 .claimButtons a {
     text-decoration: none;
+    padding-bottom: 2.5rem;
 }
 
 .claim button {
@@ -68,4 +69,11 @@
 
 .claim Link {
     text-decoration: none;
+
+}
+
+.verticalLine {
+    border-right: 1px solid #BC9C2E;
+    width: 0.0625rem;
+    height: 2.5rem;
 }

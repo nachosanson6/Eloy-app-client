@@ -33,7 +33,6 @@ const HomePage = () => {
   return (
     <>
       <Container>
-        <h1>Home Page</h1>
         <div style={{ paddingTop: "20px" }}>
           <CarouselComponent photos={photos} />
         </div>

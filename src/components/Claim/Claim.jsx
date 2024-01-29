@@ -18,7 +18,9 @@ const Claim = () => {
                     <button>Ver joyería</button>
                 </Link>
 
+
             </div>
+            <div className="verticalLine"></div>
         </div>
     )
 }
