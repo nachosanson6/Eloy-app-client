@@ -1,6 +1,6 @@
 .claim {
     display: flex;
-    padding: 5rem 0rem 2.5rem 0rem;
+    padding: 5rem 2rem 2.5rem 2rem;
     flex-direction: column;
     align-items: center;
     align-self: stretch;

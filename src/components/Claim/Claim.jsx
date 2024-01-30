@@ -9,7 +9,7 @@ const Claim = () => {
             <h4>Donde la Inspiración se Encuentra con la Creatividad</h4>
             <div className="claimButtons">
                 <Link to={"/picturesGallery"}>
-                    <button> Ver pinturas</button>
+                    <button> Ver cuadros</button>
                 </Link>
                 <Link to={'/sculpturesGallery'} >
                     <button>Ver esculturas</button>

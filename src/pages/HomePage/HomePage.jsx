@@ -31,13 +31,13 @@ const HomePage = () => {
     )
   }
   return (
-    <>
-      <Container>
-        <div style={{ paddingTop: "20px" }}>
-          <CarouselComponent photos={photos} />
-        </div>
-      </Container>
-    </>
+    <div className="homePage">
+      {/* <Container> */}
+      <div style={{ paddingTop: "20px" }}>
+        <CarouselComponent photos={photos} />
+      </div>
+      {/* </Container> */}
+    </div>
   )
 }
 export default HomePage

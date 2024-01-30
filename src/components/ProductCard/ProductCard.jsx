@@ -6,7 +6,7 @@ const ProductCard = ({ name, photo, _id, product, height, width, materials, colo
     let chipContent;
     switch (product) {
         case 'Pictures':
-            chipContent = 'Pintura';
+            chipContent = 'Cuadro';
             break;
         case 'Sculptures':
             chipContent = 'Escultura';
