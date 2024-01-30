@@ -4,14 +4,15 @@ import ProductCard from "../ProductCard/ProductCard"
 
 
 const ProductList = ({ element }) => {
+    console.log(element)
     return (
         <Row>
             {
                 element.map((elm, index) => {
                     return (
-                            <Col key={index} lg={{ span: 3 }} md={{ span: 6 }} sm={{ span: 10 }} >
-                                <ProductCard  {...elm} />
-                            </Col >
+                        <Col key={index} lg={{ span: 3 }} md={{ span: 6 }} sm={{ span: 10 }} >
+                            <ProductCard  {...elm} />
+                        </Col >
 
                     )
                 })

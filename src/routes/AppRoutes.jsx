@@ -4,6 +4,7 @@ import PicturesGalleryPage from '../pages/PicturesGalleryPage/PicturesGalleryPag
 import SculpturesGalleryPage from '../pages/SculpturesGalleryPage/SculpturesGalleryPage'
 import JewelryGalleryPage from '../pages/JewelryGalleryPage/JewelryGalleryPage'
 import ProductDetailsPage from '../pages/ProductDetailsPage/ProductDetailsPage'
+import ProductsGalleryPage from '../pages/ProductsGalleryPage/ProductsGalleryPage'
 
 
 const AppRoutes = () => {
@@ -16,6 +17,7 @@ const AppRoutes = () => {
             <Route path={'/sculpturesGallery'} element={<SculpturesGalleryPage />} />
             <Route path={'/jewelryGallery'} element={<JewelryGalleryPage />} />
             <Route path={'/productDetails/:product_id'} element={<ProductDetailsPage />} />
+            <Route path={'/productsGallery'} element={<ProductsGalleryPage />} />
 
         </Routes>
 

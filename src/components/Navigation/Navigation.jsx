@@ -59,7 +59,7 @@ const Navigation = () => {
                     </Navbar.Brand>
                     <Nav className="ms-auto">
                         <div className="element">
-                            <Link to={'/picturesGallery'} className='btn'>Galería</Link>
+                            <Link to={'/productsGallery'} className='btn'>Galería</Link>
 
                             <Link to={'/sculpturesGallery'} className='btn'>El artista</Link>
 

@@ -19,6 +19,10 @@ class AllProductsService {
     getAllPhotos() {
         return this.api.get('/getAllPhotos')
     }
+
+    getAllProducts(){
+        return this.api.get('getAllProducts')
+    }
 }
 const allProductsService = new AllProductsService()
 export default allProductsService
