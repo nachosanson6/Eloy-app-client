@@ -50,6 +50,8 @@ const SelectecProductsCarousel = () => {
     showImages(prevIndex);
   };
 
+
+
   // const handleZoom = () => {
   //   const mainImage = mainImageRef.current;
 
@@ -95,7 +97,11 @@ const SelectecProductsCarousel = () => {
                   src={image.photo}
                   alt={`Imagen ${currentIndex + i + 1}`}
                 />
-                <div className="chip">{image.product}</div>
+                <div className="chip">
+                  {image.product === 'Pictures' ? 'Cuadro' :
+                    image.product === 'Sculptures' ? 'Escultura' :
+                      image.product === 'Jewelry' ? 'Joyería' : 'Otro'}
+                </div>
               </div>
             ))}
           </div>
