@@ -1,19 +1,33 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Carousel } from "react-bootstrap";
 import Loading from "../Loading/Loading";
-import "./Carousel.css";
+import "./SelectecProductsCarousel.css";
+import allProductsService from "../../services/allProducts.services";
 
-const CarouselComponent = ({ photos }) => {
+const SelectecProductsCarousel = () => {
+  const [photos, setPhotos] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0);
   const mainImageRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const imagesPerPage = 4;
+
+  useEffect(() => {
+    loadPhotos()
+  }, [])
 
   const showImages = (startIndex) => {
     const endIndex = Math.min(startIndex + imagesPerPage, photos.length);
     setCurrentIndex(startIndex);
   };
 
+  const loadPhotos = async () => {
+    try {
+      const { data } = await allProductsService.getAllPhotos();
+      const shuffledPhotos = data.sort(() => Math.random() - 0.5);
+      setPhotos(shuffledPhotos);
+    } catch (error) {
+      console.error("Error loading photos:", error);
+    }
+  };
   const nextImages = () => {
     if (!isZoomed) {
       const nextIndex = (currentIndex + imagesPerPage) % photos.length;
@@ -41,22 +55,22 @@ const CarouselComponent = ({ photos }) => {
   //   }
   // };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextImage();
-    }, 5000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     nextImage();
+  //   }, 5000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [currentIndex]);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [currentIndex]);
 
   if (!photos) {
     return <Loading />;
   }
 
   return (
-    <div id="carousel-container">
+    <div id="carousel-container" >
       <div id="nav-container">
         <h3 className="selectedProduct">Obras destacadas</h3>
         <div id="main-image-container">
@@ -97,4 +111,4 @@ const CarouselComponent = ({ photos }) => {
   );
 };
 
-export default CarouselComponent;
+export default SelectecProductsCarousel;

@@ -7,17 +7,13 @@
   align-self: stretch;
 }
 
-/* #nav-container {
-  display: flex;
-} */
-
 #main-image-container {
   width: 100vw;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-evenly;
-  gap: 2rem;
+
 
   flex: 1 0 0;
 }
@@ -42,6 +38,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: 2.375rem;
+  padding-left: 2.5rem;
 }
 
 .buttons {

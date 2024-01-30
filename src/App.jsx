@@ -1,4 +1,5 @@
 import './App.css'
+import SelectecProductsCarousel from './components/SelectecProductsCarousel/SelectecProductsCarousel'
 import Claim from './components/Claim/Claim'
 import Footer from './components/Footer/Footer'
 import Navigation from './components/Navigation/Navigation'
@@ -10,10 +11,10 @@ function App() {
     <>
       <Navigation />
       <Claim />
-      <div className='pt-5 '>
-        <AppRoutes />
-      </div>
+      <SelectecProductsCarousel />
+      <AppRoutes />
       <Footer />
+
     </>
   )
 }

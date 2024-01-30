@@ -6,7 +6,7 @@ import Loading from "../../components/Loading/Loading"
 import sculptureService from "../../services/sculpture.services"
 import jewelryService from "../../services/jewelry.services"
 import "./ProductDetailsPage.css"
-import CarouselComponent from "../../components/Carousel/Carousel"
+import CarouselComponent from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
 import ProductInformation from "../../components/ProductInformation/ProductInformation"
 import { AuthContext } from "../../contexts/auth.context"
 
@@ -14,7 +14,7 @@ const ProductDetailsPage = () => {
 
   const { product_id } = useParams()
   const [productDetails, setProductDetails] = useState(null)
-  const {loggedUser} = useContext(AuthContext)
+  const { loggedUser } = useContext(AuthContext)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -102,8 +102,8 @@ const ProductDetailsPage = () => {
           <ProductInformation productDetails={productDetails} />
         </div>
       </div>
-      {loggedUser &&(
-      <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
+      {loggedUser && (
+        <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
       )}
     </Container>
   )
