@@ -8,16 +8,11 @@ const SelectecProductsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const mainImageRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const imagesPerPage = 4;
+
 
   useEffect(() => {
     loadPhotos()
   }, [])
-
-  const showImages = (startIndex) => {
-    const endIndex = Math.min(startIndex + imagesPerPage, photos.length);
-    setCurrentIndex(startIndex);
-  };
 
   const loadPhotos = async () => {
     try {
@@ -28,6 +23,17 @@ const SelectecProductsCarousel = () => {
       console.error("Error loading photos:", error);
     }
   };
+
+  const imagesPerPage =
+    window.innerWidth >= 768 ? 4 : window.innerWidth >= 480 ? 3 : 2;
+
+  console.log(window.innerWidth)
+
+  const showImages = (startIndex) => {
+    const endIndex = Math.min(startIndex + imagesPerPage, photos.length);
+    setCurrentIndex(startIndex);
+  };
+
   const nextImages = () => {
     if (!isZoomed) {
       const nextIndex = (currentIndex + imagesPerPage) % photos.length;

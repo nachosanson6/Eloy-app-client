@@ -61,6 +61,18 @@
   border: 1px solid var(--Colors-Gold, #BC9C2E);
 }
 
+@media screen and (max-width: 768px) {
+  .carousel-image {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .carousel-image {
+    width: 45vw;
+  }
+}
+
 
 
 /* #main-image-container {
