@@ -5,6 +5,7 @@
   align-items: center;
   gap: 2rem;
   align-self: stretch;
+  padding: 0rem 2rem 2.5rem 2rem;
 }
 
 #main-image-container {
@@ -59,6 +60,8 @@
   border-radius: 0.1875rem;
   border: 1px solid var(--Colors-Gold, #BC9C2E);
 }
+
+
 
 /* #main-image-container {
   display: flex;

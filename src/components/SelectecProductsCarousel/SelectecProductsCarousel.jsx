@@ -70,33 +70,34 @@ const SelectecProductsCarousel = () => {
   }
 
   return (
-    <div id="carousel-container" >
-      <div id="nav-container">
-        <h3 className="selectedProduct">Obras destacadas</h3>
-        <div id="main-image-container">
-          {photos.slice(currentIndex, currentIndex + imagesPerPage).map((image, i) => (
-            <>
-              <img
-                key={i}
-                className={`carousel-image ${i === 0 ? 'active' : ''}`}
-                src={image}
-                alt={`Imagen ${currentIndex + i + 1}`}
-              // onClick={handleZoom}
-              />
-            </>
-          ))}
+    <>
+      <div id="carousel-container" >
+        <div id="nav-container">
+          <h3 className="selectedProduct">Obras destacadas</h3>
+          <div id="main-image-container">
+            {photos.slice(currentIndex, currentIndex + imagesPerPage).map((image, i) => (
+              <>
+                <img
+                  key={i}
+                  className={`carousel-image ${i === 0 ? 'active' : ''}`}
+                  src={image}
+                  alt={`Imagen ${currentIndex + i + 1}`}
+                // onClick={handleZoom}
+                />
+              </>
+            ))}
+          </div>
+          <div className="buttons">
+            <button id="prev-btn" className="nav-btn" onClick={prevImages}>
+              &lt;
+            </button>
+            <button id="next-btn" className="nav-btn" onClick={nextImages}>
+              &gt;
+            </button>
+          </div>
         </div>
-        <div className="buttons">
-          <button id="prev-btn" className="nav-btn" onClick={prevImages}>
-            &lt;
-          </button>
-          <button id="next-btn" className="nav-btn" onClick={nextImages}>
-            &gt;
-          </button>
-        </div>
-      </div>
 
-      {/* <div id="thumbnail-container">
+        {/* <div id="thumbnail-container">
         {photos.map((image, i) => (
           <div
             key={i}
@@ -107,7 +108,10 @@ const SelectecProductsCarousel = () => {
           </div>
         ))}
       </div> */}
-    </div>
+        <div className="verticalLine"></div>
+      </div>
+
+    </>
   );
 };
 
