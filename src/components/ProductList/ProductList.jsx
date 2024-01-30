@@ -1,23 +1,21 @@
-import { Col, Row } from "react-bootstrap"
 import ProductCard from "../ProductCard/ProductCard"
+import './ProductList.css'
 
 
 
 const ProductList = ({ element }) => {
-    console.log(element)
     return (
-        <Row>
+        <div className="product-list">
             {
                 element.map((elm, index) => {
                     return (
-                        <Col key={index} lg={{ span: 3 }} md={{ span: 6 }} sm={{ span: 10 }} >
+                        <div key={index} className="product-item">
                             <ProductCard  {...elm} />
-                        </Col >
-
-                    )
+                        </div>
+                    );
                 })
             }
-        </Row >
-    )
+        </div>
+    );
 }
 export default ProductList

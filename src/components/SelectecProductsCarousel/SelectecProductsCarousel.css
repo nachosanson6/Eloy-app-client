@@ -28,7 +28,37 @@
   align-self: stretch;
   background: lightgray 50% / cover no-repeat;
   box-shadow: 10px 10px 16px 0px rgba(0, 0, 0, 0.08);
+  position: relative;
 
+}
+
+.carousel-image-container {
+  position: relative;
+
+  /* Ajusta el ancho según sea necesario */
+  height: auto;
+  /* Ajusta la altura según sea necesario */
+}
+
+.carousel-image-container .chip {
+  position: absolute;
+  bottom: 0.625rem;
+  right: 0%;
+  display: flex;
+  padding: 0.25rem 1.375rem 0.25rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.25rem 0rem 0rem 0.25rem;
+  background: var(--Colors-Gold, #BC9C2E);
+  z-index: 1;
+  color: var(--Colors-White, #FFF);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: "Familjen Grotesk";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.125rem;
 }
 
 .selectedProduct {
@@ -65,11 +95,19 @@
   .carousel-image {
     width: 30vw;
   }
+
+  #main-image-container {
+    width: 95vw;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .carousel-image {
     width: 45vw;
+  }
+
+  #main-image-container {
+    width: 100vw;
   }
 }
 

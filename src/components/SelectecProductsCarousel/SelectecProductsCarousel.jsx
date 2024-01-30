@@ -24,15 +24,13 @@ const SelectecProductsCarousel = () => {
     }
   };
 
-  // allProductsService
-  //     .getAllPhotos()
-  //     .then(({ data }) => setPhotos(data))
-  //     .catch(err => console.log(err))
+  allProductsService
+    .getAllPhotos()
+    .then(({ data }) => console.log(data))
+    .catch(err => console.log(err))
 
   const imagesPerPage =
     window.innerWidth >= 768 ? 4 : window.innerWidth >= 480 ? 3 : 2;
-
-  console.log(window.innerWidth)
 
   const showImages = (startIndex) => {
     const endIndex = Math.min(startIndex + imagesPerPage, photos.length);
@@ -87,15 +85,18 @@ const SelectecProductsCarousel = () => {
           <h3 className="selectedProduct">Obras destacadas</h3>
           <div id="main-image-container">
             {photos.slice(currentIndex, currentIndex + imagesPerPage).map((image, i) => (
-              <>
+              <div
+                key={i}
+                className={`carousel-image-container ${i === 0 ? 'active' : ''}`}
+                onClick={() => showImage(i)}
+              >
                 <img
-                  key={i}
-                  className={`carousel-image ${i === 0 ? 'active' : ''}`}
-                  src={image}
+                  className="carousel-image"
+                  src={image.photo}
                   alt={`Imagen ${currentIndex + i + 1}`}
-                // onClick={handleZoom}
                 />
-              </>
+                <div className="chip">{image.product}</div>
+              </div>
             ))}
           </div>
           <div className="buttons">

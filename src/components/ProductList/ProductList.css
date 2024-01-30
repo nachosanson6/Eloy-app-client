@@ -1,0 +1,26 @@
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-item {
+    flex: 0 0 calc(33.333% - 1rem);
+    /* 3 items por fila en desktop */
+    margin: 0.5rem;
+}
+
+/* Media queries para ajustar el diseño en tablet y móvil */
+@media (max-width: 768px) {
+    .product-item {
+        flex: 0 0 calc(50% - 1rem);
+        /* 2 items por fila en tablet */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-item {
+        flex: 0 0 calc(100% - 1rem);
+        /* 1 item por fila en móvil */
+    }
+}
