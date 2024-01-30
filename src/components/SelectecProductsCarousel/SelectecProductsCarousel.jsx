@@ -24,6 +24,11 @@ const SelectecProductsCarousel = () => {
     }
   };
 
+  // allProductsService
+  //     .getAllPhotos()
+  //     .then(({ data }) => setPhotos(data))
+  //     .catch(err => console.log(err))
+
   const imagesPerPage =
     window.innerWidth >= 768 ? 4 : window.innerWidth >= 480 ? 3 : 2;
 
