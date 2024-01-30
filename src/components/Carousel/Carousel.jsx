@@ -7,34 +7,39 @@ const CarouselComponent = ({ photos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const mainImageRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const imagesPerPage = 4;
 
-  const showImage = (index) => {
-    setCurrentIndex(index);
+  const showImages = (startIndex) => {
+    const endIndex = Math.min(startIndex + imagesPerPage, photos.length);
+    setCurrentIndex(startIndex);
   };
 
-  const nextImage = () => {
+  const nextImages = () => {
     if (!isZoomed) {
-      setCurrentIndex((currentIndex + 1) % photos.length);
+      const nextIndex = (currentIndex + imagesPerPage) % photos.length;
+      showImages(nextIndex);
     }
   };
 
-  const prevImage = () => {
-    setCurrentIndex((currentIndex - 1 + photos.length) % photos.length);
+  const prevImages = () => {
+    const prevIndex =
+      (currentIndex - imagesPerPage + photos.length) % photos.length;
+    showImages(prevIndex);
   };
 
-  const handleZoom = () => {
-    const mainImage = mainImageRef.current;
-  
-    if (mainImage) {
-      if (mainImage.classList.contains('zoomed')) {
-        mainImage.classList.remove('zoomed');
-        setIsZoomed(false);
-      } else {
-        mainImage.classList.add('zoomed');
-        setIsZoomed(true);
-      }
-    }
-  };
+  // const handleZoom = () => {
+  //   const mainImage = mainImageRef.current;
+
+  //   if (mainImage) {
+  //     if (mainImage.classList.contains('zoomed')) {
+  //       mainImage.classList.remove('zoomed');
+  //       setIsZoomed(false);
+  //     } else {
+  //       mainImage.classList.add('zoomed');
+  //       setIsZoomed(true);
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,24 +58,31 @@ const CarouselComponent = ({ photos }) => {
   return (
     <div id="carousel-container">
       <div id="nav-container">
-        <button id="prev-btn" className="nav-btn" onClick={prevImage}>
-          &lt;
-        </button>
-
-        <img
-          id="main-image"
-          ref={mainImageRef}
-          src={photos[currentIndex]}
-          alt={`Imagen ${currentIndex + 1}`}
-          onClick={handleZoom} 
-        />
-
-        <button id="next-btn" className="nav-btn" onClick={nextImage}>
-          &gt;
-        </button>
+        <h3 className="selectedProduct">Obras destacadas</h3>
+        <div id="main-image-container">
+          {photos.slice(currentIndex, currentIndex + imagesPerPage).map((image, i) => (
+            <>
+              <img
+                key={i}
+                className={`carousel-image ${i === 0 ? 'active' : ''}`}
+                src={image}
+                alt={`Imagen ${currentIndex + i + 1}`}
+              // onClick={handleZoom}
+              />
+            </>
+          ))}
+        </div>
+        <div className="buttons">
+          <button id="prev-btn" className="nav-btn" onClick={prevImages}>
+            &lt;
+          </button>
+          <button id="next-btn" className="nav-btn" onClick={nextImages}>
+            &gt;
+          </button>
+        </div>
       </div>
 
-      <div id="thumbnail-container">
+      {/* <div id="thumbnail-container">
         {photos.map((image, i) => (
           <div
             key={i}
@@ -80,7 +92,7 @@ const CarouselComponent = ({ photos }) => {
             <img src={image} alt={`Thumbnail ${i + 1}`} />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

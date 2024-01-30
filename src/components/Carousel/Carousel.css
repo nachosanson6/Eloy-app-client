@@ -1,4 +1,91 @@
 #carousel-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  align-self: stretch;
+}
+
+/* #nav-container {
+  display: flex;
+} */
+
+#main-image-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 2rem;
+
+  flex: 1 0 0;
+}
+
+.carousel-image {
+  display: flex;
+  height: auto;
+  width: 20vw;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: stretch;
+  background: lightgray 50% / cover no-repeat;
+  box-shadow: 10px 10px 16px 0px rgba(0, 0, 0, 0.08);
+
+}
+
+.selectedProduct {
+  color: var(--Colors-Black, #222);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: "Familjen Grotesk";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.375rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+  margin: 2rem;
+}
+
+.nav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+  border-radius: 0.1875rem;
+  border: 1px solid var(--Colors-Gold, #BC9C2E);
+}
+
+/* #main-image-container {
+  display: flex;
+}
+
+.carousel-image {
+  max-width: 25%;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease-in-out;
+}
+
+#main-image-container .carousel-image:not(.active) {
+  transform: scale(0);
+}
+
+#thumbnail-container {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 10px;
+  max-width: 80%;
+}
+
+#carousel-container {
   position: relative;
   height: 85vh;
   display: flex;
@@ -69,8 +156,8 @@
 }
 
 #main-image.zoomed {
-  transform: scale(2);  
+  transform: scale(2);
   transition: transform 0.3s ease-in-out;
   max-height: 100vh;
 
-}
+} */
