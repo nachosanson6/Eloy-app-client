@@ -1,10 +1,10 @@
 .claim {
     display: flex;
-    padding: 5rem 2rem 2.5rem 2rem;
+    padding: 5rem 1.5rem 2.5rem 1.5rem;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
     align-self: stretch;
-
 }
 
 .claim h1 {
@@ -12,12 +12,11 @@
     color: var(--Colors-Black, #222);
     text-align: center;
     font-family: Stardom;
-    font-size: 2.5rem;
+    font-size: 40px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-transform: capitalize;
-    padding-bottom: 2rem;
 }
 
 .claim h4 {
@@ -25,55 +24,39 @@
     color: var(--Colors-Grey1, #A1A1A1);
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
-
-    /* Desktop/H4 */
     font-family: "Familjen Grotesk";
-    font-size: 1.5rem;
+    font-size: 24px;
     font-style: normal;
     font-weight: 700;
-    line-height: 1.75rem;
-    /* 116.667% */
+    line-height: 28px;
 }
 
 .claimButtons {
     display: flex;
-    padding: 1rem 0rem;
     justify-content: center;
     align-items: flex-start;
-    gap: 1rem;
+    gap: var(--Spacing-s24px, 16px);
 
 }
 
 .claimButtons a {
     text-decoration: none;
-    padding-bottom: 2.5rem;
+
 }
 
 .claim button {
     display: flex;
-    padding: 0.5rem;
+    padding: 8px;
     align-items: center;
-    gap: 0.5rem;
-    border-radius: 0.1875rem;
-    border: 0px;
+    gap: 8px;
+    border-radius: 3px;
     background: var(--Colors-Gold, #BC9C2E);
     color: var(--Colors-White, #FFF);
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: "Familjen Grotesk";
-    font-size: 1rem;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    text-decoration: none;
-}
-
-.claim Link {
-    text-decoration: none;
-
-}
-
-.verticalLine {
-    border-right: 1px solid #BC9C2E;
-    width: 0.0625rem;
-    height: 2.5rem;
+    border: 0px;
 }

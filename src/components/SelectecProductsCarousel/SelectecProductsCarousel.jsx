@@ -88,7 +88,7 @@ const SelectecProductsCarousel = () => {
           </button>
         </div>
 
-        <div className="verticalLine"></div>
+
       </div>
 
     </>

@@ -20,7 +20,6 @@ const Claim = () => {
 
 
             </div>
-            <div className="verticalLine"></div>
         </div>
     )
 }
