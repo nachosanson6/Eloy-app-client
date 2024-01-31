@@ -5,7 +5,7 @@
   align-items: center;
   gap: 2rem;
   align-self: stretch;
-  padding: 0rem 2rem 2.5rem 2rem;
+  padding: 5rem 2rem 2.5rem 2rem;
 }
 
 #main-image-container {
@@ -21,8 +21,8 @@
 
 .carousel-image {
   display: flex;
-  height: auto;
-  width: 15vw;
+  height: 14.625rem;
+  width: auto;
   justify-content: flex-end;
   align-items: center;
   align-self: stretch;
@@ -34,10 +34,7 @@
 
 .carousel-image-container {
   position: relative;
-
-  /* Ajusta el ancho según sea necesario */
   height: auto;
-  /* Ajusta la altura según sea necesario */
 }
 
 .carousel-image-container .chip {
@@ -91,6 +88,7 @@
   border: 1px solid var(--Colors-Gold, #BC9C2E);
 }
 
+/* Tablet */
 @media screen and (max-width: 768px) {
   .carousel-image {
     width: 30vw;
@@ -101,6 +99,7 @@
   }
 }
 
+/* Movil */
 @media screen and (max-width: 480px) {
   .carousel-image {
     width: 45vw;

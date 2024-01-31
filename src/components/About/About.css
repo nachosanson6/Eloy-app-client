@@ -1,0 +1,94 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    align-self: stretch;
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+.about h3 {
+    color: var(--Colors-Black, #222);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Familjen Grotesk";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.375rem;
+}
+
+.about .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    align-self: stretch;
+}
+
+.artistPicture {
+    width: 17.125rem;
+    height: 17.8125rem;
+
+}
+
+.about .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    align-self: stretch;
+}
+
+.artistName {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Familjen Grotesk";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.75rem;
+}
+
+.artistDescription {
+    color: var(--Colors-Grey-2, #666);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Familjen Grotesk";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.contactButton {
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.1875rem;
+    background: var(--Colors-Gold, #BC9C2E);
+    color: var(--Colors-White, #FFF);
+    font-feature-settings: 'clig' off, 'liga' off;
+    border: 0px;
+
+    /* Desktop/Caption */
+    font-family: "Familjen Grotesk";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Tablet */
+@media screen and (min-width: 480px) {
+    .about {
+        padding: 0 5rem 0 5rem;
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+    .about {
+        padding: 0 7.5rem 0 7.5rem;
+    }
+}

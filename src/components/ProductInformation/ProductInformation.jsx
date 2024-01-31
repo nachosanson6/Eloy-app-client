@@ -1,5 +1,4 @@
 const ProductInformation = ({ productDetails }) => {
-    console.log(productDetails)
     return (
         <>
             <h2>{productDetails.name}</h2>

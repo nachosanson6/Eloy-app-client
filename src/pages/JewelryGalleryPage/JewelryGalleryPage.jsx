@@ -3,6 +3,7 @@ import jewelryService from "../../services/jewelry.services"
 import ProductList from "../../components/ProductList/ProductList"
 import Loading from "../../components/Loading/Loading"
 import { Container } from "react-bootstrap"
+import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
 
 const JewelryGalleryPage = () => {
 
@@ -27,6 +28,7 @@ const JewelryGalleryPage = () => {
     return (
         <>
             <Container>
+                <SelectecProductsCarousel />
 
                 <h1>Toda la bisutería</h1>
 

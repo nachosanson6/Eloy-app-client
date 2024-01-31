@@ -86,18 +86,7 @@ const ProductDetailsPage = () => {
   return (
     <Container>
       <div className="allInformation">
-        <div className="carousel" >
-          {productDetails.photo2 && (
-            <>
-              <CarouselComponent photos={images} />
-            </>
-          )}
-          {!productDetails.photo2 && (
-            <>
-              <img className="productImage" src={productDetails.photo} alt="" />
-            </>
-          )}
-        </div>
+        <img src={productDetails.photo} alt="" />
         <div className="productInformation" >
           <ProductInformation productDetails={productDetails} />
         </div>

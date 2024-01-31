@@ -1,14 +1,14 @@
-import { Container, Row, Col } from "react-bootstrap"
 import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
-import { useEffect, useState } from "react";
-import allProductsService from "../../services/allProducts.services";
-import Loading from "../../components/Loading/Loading";
+import Claim from "../../components/Claim/Claim";
+import About from "../../components/About/About";
 
 const HomePage = () => {
 
   return (
     <div className="homePage">
-
+      <Claim />
+      <SelectecProductsCarousel />
+      <About />
     </div>
   )
 }

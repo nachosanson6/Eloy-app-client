@@ -24,10 +24,10 @@ const SelectecProductsCarousel = () => {
     }
   };
 
-  allProductsService
-    .getAllPhotos()
-    .then(({ data }) => console.log(data))
-    .catch(err => console.log(err))
+  // allProductsService
+  //   .getAllPhotos()
+  //   .then(({ data }) => setPhotos(data))
+  //   .catch(err => console.log(err))
 
   const imagesPerPage =
     window.innerWidth >= 768 ? 4 : window.innerWidth >= 480 ? 3 : 2;
@@ -50,31 +50,6 @@ const SelectecProductsCarousel = () => {
     showImages(prevIndex);
   };
 
-
-
-  // const handleZoom = () => {
-  //   const mainImage = mainImageRef.current;
-
-  //   if (mainImage) {
-  //     if (mainImage.classList.contains('zoomed')) {
-  //       mainImage.classList.remove('zoomed');
-  //       setIsZoomed(false);
-  //     } else {
-  //       mainImage.classList.add('zoomed');
-  //       setIsZoomed(true);
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     nextImage();
-  //   }, 5000);
-
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [currentIndex]);
 
   if (!photos) {
     return <Loading />;
@@ -115,17 +90,6 @@ const SelectecProductsCarousel = () => {
           </div>
         </div>
 
-        {/* <div id="thumbnail-container">
-        {photos.map((image, i) => (
-          <div
-            key={i}
-            className={`thumbnail ${i === currentIndex ? "active" : ""}`}
-            onClick={() => showImage(i)}
-          >
-            <img src={image} alt={`Thumbnail ${i + 1}`} />
-          </div>
-        ))}
-      </div> */}
         <div className="verticalLine"></div>
       </div>
 

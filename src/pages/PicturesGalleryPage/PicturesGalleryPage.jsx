@@ -3,6 +3,7 @@ import pictureService from "../../services/picture.services"
 import ProductList from "../../components/ProductList/ProductList"
 import Loading from "../../components/Loading/Loading"
 import { Container } from "react-bootstrap"
+import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
 
 const PicturesGalleryPage = () => {
 
@@ -27,6 +28,7 @@ const PicturesGalleryPage = () => {
     return (
         <>
             <Container>
+                <SelectecProductsCarousel />
 
                 <h1>Todos los cuadros</h1>
 

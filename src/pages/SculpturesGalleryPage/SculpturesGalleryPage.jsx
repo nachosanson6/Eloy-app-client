@@ -3,6 +3,7 @@ import sculptureService from "../../services/sculpture.services"
 import ProductList from "../../components/ProductList/ProductList"
 import Loading from "../../components/Loading/Loading"
 import { Container } from "react-bootstrap"
+import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
 
 const SculpturesGalleryPage = () => {
 
@@ -27,6 +28,7 @@ const SculpturesGalleryPage = () => {
     return (
         <>
             <Container>
+                <SelectecProductsCarousel />
 
                 <h1>Todas las esculturas</h1>
 
