@@ -70,8 +70,6 @@
     color: var(--Colors-White, #FFF);
     font-feature-settings: 'clig' off, 'liga' off;
     border: 0px;
-
-    /* Desktop/Caption */
     font-family: "Familjen Grotesk";
     font-size: 1rem;
     font-style: normal;
@@ -79,10 +77,28 @@
     line-height: normal;
 }
 
+.horizontalLineGap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.75rem;
+    align-self: stretch;
+}
+
+.horizontalLine {
+    width: 6.25rem;
+    height: 0.0625rem;
+    background: var(--Colors-Gold, #BC9C2E);
+}
+
 /* Tablet */
 @media screen and (min-width: 480px) {
     .about {
         padding: 0 5rem 0 5rem;
+    }
+
+    .about .text {
+        align-items: flex-start;
     }
 }
 
@@ -90,5 +106,28 @@
 @media screen and (min-width: 768px) {
     .about {
         padding: 0 7.5rem 0 7.5rem;
+    }
+
+    .about .content {
+        display: flex;
+        align-items: flex-end;
+        gap: var(--Spacing-s2.5rem, 2.5rem);
+        align-self: stretch;
+        flex-direction: row;
+
+    }
+
+    .artistPicture {
+        width: 27.3125rem;
+        height: 28.375rem;
+
+    }
+
+    .about .text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--Spacing-s2.5rem, 2.5rem);
+        flex: 1 0 0;
     }
 }

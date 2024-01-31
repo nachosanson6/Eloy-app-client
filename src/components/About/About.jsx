@@ -20,6 +20,12 @@ const About = () => {
                     <button className='contactButton'>Contactar con Eloy</button>
                 </div>
             </div>
+            <div className="horizontalLineGap">
+                <div className="horizontalLine"></div>
+            </div>
+            <div className="testimonialSection">
+
+            </div>
         </div>
     )
 }
