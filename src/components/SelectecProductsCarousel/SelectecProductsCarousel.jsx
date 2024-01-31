@@ -58,36 +58,34 @@ const SelectecProductsCarousel = () => {
   return (
     <>
       <div id="carousel-container" >
-        <div id="nav-container">
-          <h3 className="selectedProduct">Obras destacadas</h3>
-          <div id="main-image-container">
-            {photos.slice(currentIndex, currentIndex + imagesPerPage).map((image, i) => (
-              <div
-                key={i}
-                className={`carousel-image-container ${i === 0 ? 'active' : ''}`}
-                onClick={() => showImage(i)}
-              >
-                <img
-                  className="carousel-image"
-                  src={image.photo}
-                  alt={`Imagen ${currentIndex + i + 1}`}
-                />
-                <div className="chip">
-                  {image.product === 'Pictures' ? 'Cuadro' :
-                    image.product === 'Sculptures' ? 'Escultura' :
-                      image.product === 'Jewelry' ? 'Joyería' : 'Otro'}
-                </div>
+        <h3 className="selectedProduct">Obras destacadas</h3>
+        <div id="main-image-container">
+          {photos.slice(currentIndex, currentIndex + imagesPerPage).map((image, i) => (
+            <div
+              key={i}
+              className={`carousel-image-container ${i === 0 ? 'active' : ''}`}
+              onClick={() => showImage(i)}
+            >
+              <img
+                className="carousel-image"
+                src={image.photo}
+                alt={`Imagen ${currentIndex + i + 1}`}
+              />
+              <div className="chip">
+                {image.product === 'Pictures' ? 'Cuadro' :
+                  image.product === 'Sculptures' ? 'Escultura' :
+                    image.product === 'Jewelry' ? 'Joyería' : 'Otro'}
               </div>
-            ))}
-          </div>
-          <div className="buttons">
-            <button id="prev-btn" className="nav-btn" onClick={prevImages}>
-              &lt;
-            </button>
-            <button id="next-btn" className="nav-btn" onClick={nextImages}>
-              &gt;
-            </button>
-          </div>
+            </div>
+          ))}
+        </div>
+        <div className="buttons">
+          <button id="prev-btn" className="nav-btn" onClick={prevImages}>
+            &lt;
+          </button>
+          <button id="next-btn" className="nav-btn" onClick={nextImages}>
+            &gt;
+          </button>
         </div>
 
         <div className="verticalLine"></div>
