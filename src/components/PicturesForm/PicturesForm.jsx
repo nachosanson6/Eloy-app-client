@@ -15,7 +15,9 @@ const PicturesForm = ({ closeLogin }) => {
         height: "",
         width: "",
         prize: "",
-        colors: []
+        colors: [],
+        materials: [],
+        newMaterial: "", // Nuevo campo para ingresar material
 
     })
 
@@ -26,6 +28,23 @@ const PicturesForm = ({ closeLogin }) => {
         setNewPictureForm({ ...newPictureForm, [name]: value })
     }
 
+    const handleMaterialAdd = () => {
+        if (newPictureForm.newMaterial.trim() !== "") {
+            const updatedForm = {
+                ...newPictureForm,
+                materials: [...newPictureForm.materials, newPictureForm.newMaterial],
+                newMaterial: "",
+            };
+            setNewPictureForm(updatedForm);
+        }
+    };
+
+    const handleMaterialRemove = (index) => {
+        const updatedMaterials = [...newPictureForm.materials];
+        updatedMaterials.splice(index, 1);
+        setNewPictureForm({ ...newPictureForm, materials: updatedMaterials });
+    };
+
     const handleFromSubmit = e => {
         e.preventDefault();
         pictureService
@@ -33,7 +52,7 @@ const PicturesForm = ({ closeLogin }) => {
             .then(() => {
                 closeLogin()
                 navigate('/picturesGallery')
-              })
+            })
             .catch(err => console.log(err))
     }
 
@@ -56,10 +75,6 @@ const PicturesForm = ({ closeLogin }) => {
             <h2>Nuevo cuadro</h2>
 
             <Form onSubmit={handleFromSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicName">
-                    <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" value={newPictureForm.name} onChange={handleInputChange} name='name' />
-                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="image">
                     <Form.Label>Foto</Form.Label>
@@ -80,6 +95,33 @@ const PicturesForm = ({ closeLogin }) => {
                             <Form.Control type="text" value={newPictureForm.width} onChange={handleInputChange} name='width' />
                         </Form.Group>
                     </Col>
+                    <Form.Group className="mb-3" controlId="formBasicMaterials">
+                        <Form.Label>Materiales</Form.Label>
+                        <Row>
+                            <Col>
+                                <Form.Control
+                                    type="text"
+                                    value={newPictureForm.newMaterial}
+                                    onChange={(e) => setNewPictureForm({ ...newPictureForm, newMaterial: e.target.value })}
+                                />
+                            </Col>
+                            <Col>
+                                <Button variant="secondary" onClick={handleMaterialAdd}>
+                                    +
+                                </Button>
+                            </Col>
+                        </Row>
+                        {newPictureForm.materials.map((material, index) => (
+                            <Row key={index} className="mt-2">
+                                <Col>{material}</Col>
+                                <Col>
+                                    <Button variant="danger" onClick={() => handleMaterialRemove(index)}>
+                                        -
+                                    </Button>
+                                </Col>
+                            </Row>
+                        ))}
+                    </Form.Group>
                     <Col>
                         <Form.Group className="mb-3" controlId="formBasicPrize">
                             <Form.Label>Precio</Form.Label>
