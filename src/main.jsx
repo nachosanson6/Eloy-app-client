@@ -4,13 +4,16 @@ import App from './App.jsx'
 import { BrowserRouter as Router } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { AuthProviderWrapper } from './contexts/auth.context.jsx'
+import { ContactModalWrapper } from './contexts/contactModal.context.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <AuthProviderWrapper>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <ContactModalWrapper>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </ContactModalWrapper>
     </AuthProviderWrapper>
   </Router>
 )

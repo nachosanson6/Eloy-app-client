@@ -1,7 +1,12 @@
 import './About.css'
 import artistPicture from './../../images/image 12.svg'
+import { ContactModalContext } from '../../contexts/contactModal.context'
+import { useContext } from 'react'
 
 const About = () => {
+
+    const { showContactModal, setShowContactModal } = useContext(ContactModalContext)
+
     return (
         <div className="about">
             <h3>Sobre el artista</h3>
@@ -17,7 +22,7 @@ const About = () => {
                         In the eighteenth century the German philosopher Immanuel Kant developed a theory of knowledge in wh
                         Maxwell's equations—the foundation of classical electromagnetism—describe light as a wave that moves
                     </p>
-                    <button className='contactButton'>Contactar con Eloy</button>
+                    <button onClick={() => { setShowContactModal(true) }} className='contactButton'>Contactar con Eloy</button>
                 </div>
             </div>
             <div className="horizontalLineGap">

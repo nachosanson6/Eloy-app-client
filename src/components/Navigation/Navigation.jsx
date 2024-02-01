@@ -8,6 +8,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import "./Navigation.css"
 import logoLight from "./../../../src/images/Logotipo Light.svg"
+import { ContactModalContext } from '../../contexts/contactModal.context'
+import ContactForm from '../ContactForm/ContactForm'
+
 
 
 const Navigation = () => {
@@ -16,6 +19,7 @@ const Navigation = () => {
     const [type, setType] = useState()
     const { logout, loggedUser } = useContext(AuthContext)
     const [isNavbarTransparent, setIsNavigationTransparent] = useState(false)
+    const { showContactModal, setShowContactModal } = useContext(ContactModalContext)
 
     const navigate = useNavigate()
 
@@ -112,6 +116,17 @@ const Navigation = () => {
                     {type === "login" &&
                         <LoginForm closeLogin={closeLogin} />
                     }
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={showContactModal} onHide={() => setShowContactModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title className="fs-2" style={{ color: "#BC9C2E" }}>Contacta con Eloy</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <ContactForm />
+
                 </Modal.Body>
             </Modal>
         </>
