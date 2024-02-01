@@ -1,0 +1,52 @@
+.ProductGalleryPage .topFrame {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    padding-top: 2rem;
+}
+
+.ProductGalleryPage .pageSelection {
+    display: flex;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ProductGalleryPage .pageSelection #pageSize {
+    border-radius: 0.25rem 0rem 0rem 0.25rem;
+    border: 1px solid var(--Colors-Gold, #BC9C2E);
+    color: #BC9C2E;
+    color: var(--Colors-Gold, #BC9C2E);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Familjen Grotesk";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem;
+}
+
+.ProductGalleryPage .pageButtons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    align-self: stretch;
+    align-items: center;
+}
+
+.ProductGalleryPage .pageButtons button {
+    display: flex;
+    padding: 0.5rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 0.1875rem;
+    border: 1px solid var(--Colors-Gold, #BC9C2E);
+    color: #BC9C2E;
+    background-color: white;
+}
+
+.ProductGalleryPage .pageButtons span {
+    color: #BC9C2E;
+}

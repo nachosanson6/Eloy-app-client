@@ -6,13 +6,13 @@ const ProductCard = ({ name, photo, _id, product, height, width, materials, colo
     let chipContent;
     switch (product) {
         case 'Pictures':
-            chipContent = 'Cuadro';
+            chipContent = 'Pintura';
             break;
         case 'Sculptures':
             chipContent = 'Escultura';
             break;
         case 'Jewelry':
-            chipContent = 'Joyería';
+            chipContent = 'Bisutería';
             break;
         default:
             chipContent = 'Tipo Desconocido';

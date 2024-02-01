@@ -72,9 +72,9 @@ const SelectecProductsCarousel = () => {
                 alt={`Imagen ${currentIndex + i + 1}`}
               />
               <div className="chip">
-                {image.product === 'Pictures' ? 'Cuadro' :
+                {image.product === 'Pictures' ? 'Pintura' :
                   image.product === 'Sculptures' ? 'Escultura' :
-                    image.product === 'Jewelry' ? 'Joyería' : 'Otro'}
+                    image.product === 'Jewelry' ? 'Bisutería' : 'Otro'}
               </div>
             </div>
           ))}

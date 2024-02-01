@@ -9,13 +9,13 @@ const Claim = () => {
             <h4>Donde la Inspiración se Encuentra con la Creatividad</h4>
             <div className="claimButtons">
                 <Link to={"/picturesGallery"}>
-                    <button> Ver cuadros</button>
+                    <button> Ver pinturas</button>
                 </Link>
                 <Link to={'/sculpturesGallery'} >
                     <button>Ver esculturas</button>
                 </Link>
                 <Link to={'/jewelryGallery'}>
-                    <button>Ver joyería</button>
+                    <button>Ver bisutería</button>
                 </Link>
 
 

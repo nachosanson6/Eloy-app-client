@@ -20,8 +20,8 @@ class AllProductsService {
         return this.api.get('/getAllPhotos')
     }
 
-    getAllProducts(){
-        return this.api.get('getAllProducts')
+    getAllProducts() {
+        return this.api.get('/getAllProducts');
     }
 }
 const allProductsService = new AllProductsService()
