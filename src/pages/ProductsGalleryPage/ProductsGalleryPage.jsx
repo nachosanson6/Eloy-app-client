@@ -6,7 +6,9 @@ import allProductsService from "../../services/allProducts.services";
 import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel";
 import './ProductGalleryPage.css'
 import VertialLine from "../../components/VerticalLine/VerticalLine";
+
 const ProductsGalleryPage = () => {
+
     const [currentProducts, setCurrentProducts] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -59,7 +61,7 @@ const ProductsGalleryPage = () => {
     }
 
     return (
-        <div className="ProductGalleryPage">
+        <div className="productGalleryPage">
             <Container>
                 <SelectecProductsCarousel />
                 <VertialLine />
