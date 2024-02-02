@@ -1,4 +1,4 @@
-import './FInder.css'
+import './Finder.css'
 import filterIcon from './../../images/controls-alt.svg'
 import searchIcon from './../../images/search.svg'
 import { Button } from 'react-bootstrap'
