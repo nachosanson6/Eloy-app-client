@@ -62,18 +62,28 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 1rem;
+  gap: var(--Spacing-s24px, 16px);
   align-self: stretch;
 }
 
 #carousel-container .buttons button {
   display: flex;
-  padding: 0.5rem;
+  padding: 8px;
   align-items: flex-start;
-  gap: 0.625rem;
-  border-radius: 0.1875rem;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 3px;
   border: 1px solid var(--Colors-Gold, #BC9C2E);
   color: #BC9C2E;
+  width: 42px;
+}
+
+#carousel-container .buttons button a {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
 }
 
 
