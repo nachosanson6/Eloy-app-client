@@ -100,17 +100,19 @@
     .about .text {
         align-items: flex-start;
     }
+
+
 }
 
 /* Desktop */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 951px) {
     .about {
         padding: 0 7.5rem 0 7.5rem;
     }
 
     .about .content {
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
         gap: var(--Spacing-s2.5rem, 2.5rem);
         align-self: stretch;
         flex-direction: row;
