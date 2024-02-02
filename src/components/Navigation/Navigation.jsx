@@ -65,7 +65,7 @@ const Navigation = () => {
                         <div className="element">
                             <Link to={'/productsGallery'} className='btn'>Galería</Link>
 
-                            <Link to={'/sculpturesGallery'} className='btn'>El artista</Link>
+                            <Link to={'/'} className='btn'>El artista</Link>
 
                             {/* <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link> */}
                         </div>
