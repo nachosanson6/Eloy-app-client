@@ -6,6 +6,7 @@ import allProductsService from "../../services/allProducts.services";
 import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel";
 import './ProductGalleryPage.css'
 import VertialLine from "../../components/VerticalLine/VerticalLine";
+import Finder from "../../components/Finder/Finder";
 
 const ProductsGalleryPage = () => {
 
@@ -14,10 +15,12 @@ const ProductsGalleryPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(15);
     const [initialLoad, setInitialLoad] = useState(true);
+    const [searchTerm, setSearchTerm] = useState("");
+
 
     useEffect(() => {
         loadProducts();
-    }, [currentPage, pageSize]);
+    }, [currentPage, pageSize, searchTerm]);
 
     const loadProducts = () => {
         if (initialLoad) {
@@ -27,18 +30,30 @@ const ProductsGalleryPage = () => {
                 .then(({ data }) => {
                     const shuffledProducts = [...data].sort(() => Math.random() - 0.5);
                     setAllProducts(shuffledProducts);
+                    const filteredProducts = searchTerm
+                        ? shuffledProducts.filter(product =>
+                            product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                        )
+                        : shuffledProducts;
+
+                    // Aplicar la paginación para la carga inicial
                     const startIndex = (currentPage - 1) * pageSize;
                     const endIndex = startIndex + pageSize;
-                    const initialProducts = shuffledProducts.slice(startIndex, endIndex);
+                    const initialProducts = filteredProducts.slice(startIndex, endIndex);
                     setCurrentProducts(initialProducts);
+                    setInitialLoad(false);
                 })
                 .catch((err) => console.log(err));
-            setInitialLoad(false);
         } else {
             // Para las cargas posteriores
             const startIndex = (currentPage - 1) * pageSize;
             const endIndex = startIndex + pageSize;
-            const newProducts = allProducts.slice(startIndex, endIndex);
+            const filteredProducts = searchTerm
+                ? allProducts.filter(product =>
+                    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                : allProducts;
+            const newProducts = filteredProducts.slice(startIndex, endIndex);
             setCurrentProducts(newProducts);
         }
     };
@@ -63,6 +78,7 @@ const ProductsGalleryPage = () => {
     return (
         <div className="productGalleryPage">
             <Container>
+                <Finder onSearchTermChange={setSearchTerm} />
                 <SelectecProductsCarousel />
                 <VertialLine />
                 <div className="topFrame">

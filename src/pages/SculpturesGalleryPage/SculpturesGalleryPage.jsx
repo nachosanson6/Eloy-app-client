@@ -1,47 +1,63 @@
-import { useEffect, useState } from "react"
-import sculptureService from "../../services/sculpture.services"
-import ProductList from "../../components/ProductList/ProductList"
-import Loading from "../../components/Loading/Loading"
-import { Button, Container } from "react-bootstrap"
-import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
-import './SculpturesGalleryPage.css'
-import VertialLine from "../../components/VerticalLine/VerticalLine"
+import { useEffect, useState } from "react";
+import sculptureService from "../../services/sculpture.services";
+import ProductList from "../../components/ProductList/ProductList";
+import Loading from "../../components/Loading/Loading";
+import { Button, Container } from "react-bootstrap";
+import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel";
+import './SculpturesGalleryPage.css';
+import VertialLine from "../../components/VerticalLine/VerticalLine";
+import Finder from "../../components/Finder/Finder";
 
 const SculpturesGalleryPage = () => {
 
-    const [sculptures, setSculptures] = useState(null)
+    const [sculptures, setSculptures] = useState(null);
     const [currentProducts, setCurrentProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(15);
     const [initialLoad, setInitialLoad] = useState(true);
-
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        loadSculptures()
-    }, [currentPage, pageSize])
+        loadSculptures();
+    }, [currentPage, pageSize, searchTerm]);
 
     const loadSculptures = () => {
         if (initialLoad) {
             sculptureService
                 .getAllSculptures()
                 .then(({ data }) => {
-                    setSculptures(data)
+                    const shuffledSculptures = [...data].sort(() => Math.random() - 0.5);
+                    setSculptures(shuffledSculptures);
+
+                    const filteredSculptures = searchTerm
+                        ? shuffledSculptures.filter(sculpture =>
+                            sculpture.name.toLowerCase().includes(searchTerm.toLowerCase())
+                        )
+                        : shuffledSculptures;
+
+                    // Aplicar la paginación para la carga inicial
                     const startIndex = (currentPage - 1) * pageSize;
                     const endIndex = startIndex + pageSize;
-                    const initialProducts = shuffledProducts.slice(startIndex, endIndex);
-                    setCurrentProducts(initialProducts);
+                    const initialSculptures = filteredSculptures.slice(startIndex, endIndex);
+                    setCurrentProducts(initialSculptures);
+
+                    setInitialLoad(false);
                 })
-                .catch(err => console.log(err))
-            setInitialLoad(false);
+                .catch(err => console.log(err));
         } else {
             // Para las cargas posteriores
             const startIndex = (currentPage - 1) * pageSize;
             const endIndex = startIndex + pageSize;
-            const newProducts = sculptures.slice(startIndex, endIndex);
-            setCurrentProducts(newProducts);
-        }
+            const filteredSculptures = searchTerm
+                ? sculptures.filter(sculpture =>
+                    sculpture.name.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                : sculptures;
 
-    }
+            const newSculptures = filteredSculptures.slice(startIndex, endIndex);
+            setCurrentProducts(newSculptures);
+        }
+    };
 
     const handlePageChange = (direction) => {
         if (direction === "prev" && currentPage > 1) {
@@ -59,11 +75,13 @@ const SculpturesGalleryPage = () => {
     if (!sculptures) {
         return (
             <Loading />
-        )
+        );
     }
+
     return (
         <div className="sculpturesGalleryPage">
             <Container>
+                <Finder onSearchTermChange={setSearchTerm} />
                 <SelectecProductsCarousel />
                 <VertialLine />
                 <div className="topFrame">
@@ -78,7 +96,7 @@ const SculpturesGalleryPage = () => {
                         </select>
                     </div>
                 </div>
-                <ProductList element={sculptures} />
+                <ProductList element={currentProducts} />
                 <div className="pageButtons">
                     <Button onClick={() => handlePageChange("prev")} disabled={currentPage === 1}>
                         &lt;
@@ -93,6 +111,7 @@ const SculpturesGalleryPage = () => {
                 </div>
             </Container>
         </div>
-    )
-}
-export default SculpturesGalleryPage
+    );
+};
+
+export default SculpturesGalleryPage;
