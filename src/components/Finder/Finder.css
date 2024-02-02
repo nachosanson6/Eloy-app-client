@@ -77,3 +77,11 @@
     background: var(--Colors-Gold, #BC9C2E);
     color: white;
 }
+
+@media screen and (max-width: 480px) {
+    .finder .buttonsFrame {
+        justify-content: center;
+    }
+
+
+}
