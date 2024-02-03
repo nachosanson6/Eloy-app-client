@@ -8,18 +8,6 @@ import MaterialForm from '../SculptureMaterialsForm/SculptureMaterialsForm'
 
 const SculptureForm = ({ closeLogin }) => {
 
-    const [newSculptureForm, setNewSculptureForm] = useState({
-        name: "",
-        photo: "",
-        photo2: "",
-        photo3: "",
-        height: "",
-        width: "",
-        prize: "",
-        materials: [],
-        sold: false
-
-    })
     const navigate = useNavigate()
 
 

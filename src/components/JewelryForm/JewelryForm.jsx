@@ -9,15 +9,6 @@ import MaterialForm from '../JewelryMaterialForm/JewelryMaterialForm'
 
 const JewelryForm = ({ closeLogin }) => {
 
-    const [newJewelryForm, setNewJewelryForm] = useState({
-        name: "",
-        photo: "",
-        prize: "",
-        materials: [],
-        sold: false
-
-    })
-
     const navigate = useNavigate()
 
 

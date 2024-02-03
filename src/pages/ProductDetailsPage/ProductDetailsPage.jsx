@@ -9,6 +9,8 @@ import "./ProductDetailsPage.css"
 import CarouselComponent from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
 import ProductInformation from "../../components/ProductInformation/ProductInformation"
 import { AuthContext } from "../../contexts/auth.context"
+import { ModalContext } from '../../contexts/modal.context'
+
 
 const ProductDetailsPage = () => {
 
@@ -16,14 +18,14 @@ const ProductDetailsPage = () => {
   const [productDetails, setProductDetails] = useState(null)
   const { loggedUser } = useContext(AuthContext)
   const navigate = useNavigate()
+  const { setShowModal, setType, setIsEdition } = useContext(ModalContext)
+
 
   useEffect(() => {
     loadProductDetails()
   }, [product_id])
 
   const loadProductDetails = () => {
-
-    // convertir todo este codigo para que la busqueda se haga en el back-end
 
     pictureService
       .getOnePicture(product_id)
@@ -49,11 +51,11 @@ const ProductDetailsPage = () => {
       .catch((err) => console.log(err))
   }
 
+
   const deleteProduct = () => {
     pictureService.deletePicture(product_id)
       .then((response) => {
         if (response.status === 202 && productDetails.product === "Pictures") {
-          console.log(productDetails)
           navigate('/picturesGallery');
         } else {
           return sculptureService.deleteSculpture(product_id);
@@ -61,7 +63,6 @@ const ProductDetailsPage = () => {
       })
       .then((response) => {
         if (response.status === 202 && productDetails.product === "Sculptures") {
-          console.log("estrando en la coleccion de esculturas")
           navigate('/sculpturesGallery');
         } else {
           return jewelryService.deleteJewelry(product_id);
@@ -69,7 +70,6 @@ const ProductDetailsPage = () => {
       })
       .then((response) => {
         if (response.status === 202 && productDetails.product === "Jewelry") {
-          console.log("estrando en la coleccion de bisuteria", response)
           navigate('/jewelryGallery');
         }
       })
@@ -92,7 +92,11 @@ const ProductDetailsPage = () => {
         </div>
       </div>
       {loggedUser && (
-        <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
+        <>
+          <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
+          <Button variant="outline-success" onClick={() => { setShowModal(true); setType(productDetails.product); setIsEdition(true) }}>Editar</Button>
+
+        </>
       )}
     </Container>
   )

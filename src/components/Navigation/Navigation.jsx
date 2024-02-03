@@ -10,16 +10,52 @@ import "./Navigation.css"
 import logoLight from "./../../../src/images/Logotipo Light.svg"
 import { ContactModalContext } from '../../contexts/contactModal.context'
 import ContactForm from '../ContactForm/ContactForm'
-
+import { ModalContext } from '../../contexts/modal.context'
 
 
 const Navigation = () => {
 
-    const [showModal, setShowModal] = useState(false)
-    const [type, setType] = useState()
+
     const { logout, loggedUser } = useContext(AuthContext)
     const [isNavbarTransparent, setIsNavigationTransparent] = useState(false)
     const { showContactModal, setShowContactModal } = useContext(ContactModalContext)
+    const { showModal, setShowModal, type, setType, isEdition, setIsEdition } = useContext(ModalContext)
+
+
+    const [newPictureForm, setNewPictureForm] = useState({
+        name: "",
+        photo: "",
+        height: "",
+        width: "",
+        prize: "",
+        colors: [],
+        materials: [],
+        newMaterial: "",
+        sold: false
+
+    })
+
+    const [newSculptureForm, setNewSculptureForm] = useState({
+        name: "",
+        photo: "",
+        photo2: "",
+        photo3: "",
+        height: "",
+        width: "",
+        prize: "",
+        materials: [],
+        sold: false
+
+    })
+
+    const [newJewelryForm, setNewJewelryForm] = useState({
+        name: "",
+        photo: "",
+        prize: "",
+        materials: [],
+        sold: false
+
+    })
 
     const navigate = useNavigate()
 
@@ -83,13 +119,13 @@ const Navigation = () => {
                                 </Button>
 
                                 <NavDropdown title="Añadir" id="basic-nav-dropdown">
-                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("picture") }}>
+                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("Pictures"); setIsEdition(false) }}>
                                         Nuevo cuadro
                                     </Button>
-                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("sculpture") }}>
+                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("Sculptures") }}>
                                         Nueva escultura
                                     </Button>
-                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("jewelry") }}>
+                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("Jewelry") }}>
                                         Nueva bisutería
                                     </Button>
                                 </NavDropdown>
@@ -104,13 +140,13 @@ const Navigation = () => {
                     <Modal.Title className="fs-2" style={{ color: "black" }}>Añadir</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {type === "picture" &&
-                        <PicturesForm closeLogin={closeLogin} />
+                    {type === "Pictures" &&
+                        <PicturesForm closeLogin={closeLogin} newPictureForm={newPictureForm} setNewPictureForm={setNewPictureForm} />
                     }
-                    {type === "sculpture" &&
+                    {type === "Sculptures" &&
                         <SculptureForm closeLogin={closeLogin} />
                     }
-                    {type === "jewelry" &&
+                    {type === "Jewelry" &&
                         <JewelryForm closeLogin={closeLogin} />
                     }
                     {type === "login" &&

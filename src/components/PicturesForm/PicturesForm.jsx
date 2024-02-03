@@ -1,26 +1,16 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import pictureService from '../../services/picture.services'
 import uploadServices from '../../services/upload.services'
 import ColorsForm from '../ColorsForm/ColorsForm'
+import { ModalContext } from '../../contexts/modal.context'
 
 
 
-const PicturesForm = ({ closeLogin }) => {
+const PicturesForm = ({ closeLogin, newPictureForm, setNewPictureForm }) => {
 
-    const [newPictureForm, setNewPictureForm] = useState({
-        name: "",
-        photo: "",
-        height: "",
-        width: "",
-        prize: "",
-        colors: [],
-        materials: [],
-        newMaterial: "",
-        sold: false
-
-    })
+    const { isEdition } = useContext(ModalContext)
 
     const navigate = useNavigate()
 
@@ -48,6 +38,7 @@ const PicturesForm = ({ closeLogin }) => {
 
     const handleFromSubmit = e => {
         e.preventDefault();
+
         pictureService
             .createPicture(newPictureForm)
             .then(() => {
@@ -55,6 +46,8 @@ const PicturesForm = ({ closeLogin }) => {
                 navigate('/picturesGallery')
             })
             .catch(err => console.log(err))
+
+
     }
 
     const handleFileUpload = (e) => {
@@ -140,10 +133,14 @@ const PicturesForm = ({ closeLogin }) => {
                         onChange={(e) => setNewPictureForm({ ...newPictureForm, sold: e.target.checked })}
                     />
                 </Form.Group>
-
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                {isEdition &&
+                    <Button variant="primary" type="submit">
+                        Editar
+                    </Button>}
+                {!isEdition &&
+                    <Button variant="primary" type="submit">
+                        Crear
+                    </Button>}
             </Form>
         </>
     )
