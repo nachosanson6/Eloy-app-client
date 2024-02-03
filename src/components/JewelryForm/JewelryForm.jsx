@@ -13,7 +13,8 @@ const JewelryForm = ({ closeLogin }) => {
         name: "",
         photo: "",
         prize: "",
-        materials: []
+        materials: [],
+        sold: false
 
     })
 
@@ -32,7 +33,7 @@ const JewelryForm = ({ closeLogin }) => {
             .then(() => {
                 closeLogin()
                 navigate('/jewelryGallery')
-              })
+            })
             .catch(err => console.log(err))
     }
 
@@ -75,6 +76,15 @@ const JewelryForm = ({ closeLogin }) => {
                     </Col>
                 </Row>
                 <MaterialForm newJewelryForm={newJewelryForm} setNewJewelryForm={setNewJewelryForm} />
+
+                <Form.Group className="mb-3" controlId="formBasicSold">
+                    <Form.Check
+                        type="checkbox"
+                        label="¿Vendida?"
+                        checked={newJewelryForm.sold}
+                        onChange={(e) => setNewJewelryForm({ ...newJewelryForm, sold: e.target.checked })}
+                    />
+                </Form.Group>
 
                 <Button variant="primary" type="submit">
                     Submit

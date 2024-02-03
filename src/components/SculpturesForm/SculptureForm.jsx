@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
-import pictureService from '../../services/picture.services'
 import uploadServices from '../../services/upload.services'
-import MaterialsForm from '../ColorsForm/ColorsForm'
 import sculptureService from '../../services/sculpture.services'
 import MaterialForm from '../SculptureMaterialsForm/SculptureMaterialsForm'
 
@@ -18,7 +16,8 @@ const SculptureForm = ({ closeLogin }) => {
         height: "",
         width: "",
         prize: "",
-        materials: []
+        materials: [],
+        sold: false
 
     })
     const navigate = useNavigate()
@@ -36,10 +35,10 @@ const SculptureForm = ({ closeLogin }) => {
             .then(() => {
                 closeLogin()
                 navigate('/sculpturesGallery')
-              })
-            
+            })
+
             .catch(err => console.log(err))
-            
+
     }
 
     const handleFileUpload = (e) => {
@@ -52,7 +51,7 @@ const SculptureForm = ({ closeLogin }) => {
             .uploadimage(formData)
             .then(({ data }) => {
                 setNewSculptureForm({ ...newSculptureForm, [name]: data.cloudinary_url })
-                
+
             })
             .catch(err => console.log(err))
     }
@@ -104,6 +103,15 @@ const SculptureForm = ({ closeLogin }) => {
                     </Col>
                 </Row>
                 <MaterialForm newSculptureForm={newSculptureForm} setNewSculptureForm={setNewSculptureForm} />
+
+                <Form.Group className="mb-3" controlId="formBasicSold">
+                    <Form.Check
+                        type="checkbox"
+                        label="¿Vendida?"
+                        checked={newSculptureForm.sold}
+                        onChange={(e) => setNewSculptureForm({ ...newSculptureForm, sold: e.target.checked })}
+                    />
+                </Form.Group>
 
                 <Button variant="primary" type="submit">
                     Submit

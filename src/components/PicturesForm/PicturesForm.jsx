@@ -17,7 +17,8 @@ const PicturesForm = ({ closeLogin }) => {
         prize: "",
         colors: [],
         materials: [],
-        newMaterial: "", // Nuevo campo para ingresar material
+        newMaterial: "",
+        sold: false
 
     })
 
@@ -130,6 +131,15 @@ const PicturesForm = ({ closeLogin }) => {
                     </Col>
                 </Row>
                 <ColorsForm newPictureForm={newPictureForm} setNewPictureForm={setNewPictureForm} />
+
+                <Form.Group className="mb-3" controlId="formBasicSold">
+                    <Form.Check
+                        type="checkbox"
+                        label="¿Vendida?"
+                        checked={newPictureForm.sold}
+                        onChange={(e) => setNewPictureForm({ ...newPictureForm, sold: e.target.checked })}
+                    />
+                </Form.Group>
 
                 <Button variant="primary" type="submit">
                     Submit
