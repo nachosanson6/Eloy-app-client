@@ -29,6 +29,10 @@ class SculptureService {
         return this.api.get(`/getOneSculpture/${sculpture_id}`)
     }
 
+    editSculpture(sculptureDataForm) {
+        return this.api.post(`/editSculpture/`, sculptureDataForm)
+    }
+
     deleteSculpture(sculpture_id) {
         return this.api.post(`/deleteSculpture/${sculpture_id}`)
     }

@@ -29,7 +29,11 @@ class PictureService {
         return this.api.get(`/getOnePicture/${picture_id}`)
     }
 
-    deletePicture(picture_id){
+    editPicture(pictureDataForm) {
+        return this.api.post(`/editPicture/`, pictureDataForm)
+    }
+
+    deletePicture(picture_id) {
         return this.api.post(`/deletePicture/${picture_id}`)
     }
 }

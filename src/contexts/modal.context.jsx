@@ -9,6 +9,7 @@ const ModalWrapper = (props) => {
     const [type, setType] = useState()
     const [isEdition, setIsEdition] = useState(false)
 
+
     return (
         <ModalContext.Provider value={{ showModal, setShowModal, type, setType, isEdition, setIsEdition }}>
             {props.children}

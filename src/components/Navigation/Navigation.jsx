@@ -11,6 +11,7 @@ import logoLight from "./../../../src/images/Logotipo Light.svg"
 import { ContactModalContext } from '../../contexts/contactModal.context'
 import ContactForm from '../ContactForm/ContactForm'
 import { ModalContext } from '../../contexts/modal.context'
+import { ProductInformationContext } from '../../contexts/productInformation.context'
 
 
 const Navigation = () => {
@@ -19,50 +20,26 @@ const Navigation = () => {
     const { logout, loggedUser } = useContext(AuthContext)
     const [isNavbarTransparent, setIsNavigationTransparent] = useState(false)
     const { showContactModal, setShowContactModal } = useContext(ContactModalContext)
-    const { showModal, setShowModal, type, setType, isEdition, setIsEdition } = useContext(ModalContext)
+    const { showModal, setShowModal, type, setType, isEdition, setIsEdition, closeLogin } = useContext(ModalContext)
+    const { newPictureForm, setNewPictureForm, newSculptureForm, setNewSculptureForm, newJewelryForm, setNewJewelryForm } = useContext(ProductInformationContext)
 
-
-    const [newPictureForm, setNewPictureForm] = useState({
-        name: "",
-        photo: "",
-        height: "",
-        width: "",
-        prize: "",
-        colors: [],
-        materials: [],
-        newMaterial: "",
-        sold: false
-
-    })
-
-    const [newSculptureForm, setNewSculptureForm] = useState({
-        name: "",
-        photo: "",
-        photo2: "",
-        photo3: "",
-        height: "",
-        width: "",
-        prize: "",
-        materials: [],
-        sold: false
-
-    })
-
-    const [newJewelryForm, setNewJewelryForm] = useState({
-        name: "",
-        photo: "",
-        prize: "",
-        materials: [],
-        sold: false
-
-    })
+    const resetNewPictureForm = () => {
+        setNewPictureForm({
+            name: "",
+            photo: "",
+            height: "",
+            width: "",
+            prize: "",
+            colors: [],
+            materials: [],
+            newMaterial: "",
+            sold: false
+        });
+    };
 
     const navigate = useNavigate()
 
-    const closeLogin = () => {
-        setShowModal(false)
-        navigate('/')
-    }
+
     const url = window.location.href;
     const apiUrl = import.meta.env.VITE_FRONTEND_URL
 
@@ -119,7 +96,7 @@ const Navigation = () => {
                                 </Button>
 
                                 <NavDropdown title="Añadir" id="basic-nav-dropdown">
-                                    <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("Pictures"); setIsEdition(false) }}>
+                                    <Button variant="dark" className="nav-link " onClick={() => { resetNewPictureForm(); setShowModal(true); setType("Pictures"); setIsEdition(false) }}>
                                         Nuevo cuadro
                                     </Button>
                                     <Button variant="dark" className="nav-link " onClick={() => { setShowModal(true); setType("Sculptures") }}>
@@ -141,7 +118,7 @@ const Navigation = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {type === "Pictures" &&
-                        <PicturesForm closeLogin={closeLogin} newPictureForm={newPictureForm} setNewPictureForm={setNewPictureForm} />
+                        <PicturesForm />
                     }
                     {type === "Sculptures" &&
                         <SculptureForm closeLogin={closeLogin} />

@@ -5,12 +5,14 @@ import pictureService from '../../services/picture.services'
 import uploadServices from '../../services/upload.services'
 import ColorsForm from '../ColorsForm/ColorsForm'
 import { ModalContext } from '../../contexts/modal.context'
+import { ProductInformationContext } from '../../contexts/productInformation.context'
 
 
 
-const PicturesForm = ({ closeLogin, newPictureForm, setNewPictureForm }) => {
+const PicturesForm = () => {
 
-    const { isEdition } = useContext(ModalContext)
+    const { setShowModal, isEdition, showModal } = useContext(ModalContext)
+    const { newPictureForm, setNewPictureForm } = useContext(ProductInformationContext)
 
     const navigate = useNavigate()
 
@@ -36,19 +38,28 @@ const PicturesForm = ({ closeLogin, newPictureForm, setNewPictureForm }) => {
         setNewPictureForm({ ...newPictureForm, materials: updatedMaterials });
     };
 
-    const handleFromSubmit = e => {
+    console.log(isEdition)
+
+    const handleFromSubmit = async (e) => {
         e.preventDefault();
 
-        pictureService
-            .createPicture(newPictureForm)
-            .then(() => {
-                closeLogin()
-                navigate('/picturesGallery')
-            })
-            .catch(err => console.log(err))
+        try {
+            if (isEdition) {
+                await pictureService.editPicture(newPictureForm);
+                setShowModal(false);  // Cerrar la modal después de editar
+                window.location.reload();
 
-
-    }
+            } else {
+                await pictureService.createPicture(newPictureForm);
+                setShowModal(false);  // Cerrar la modal después de crear
+                console.log("cierra la modal!!!!")
+                // Navegar a la galería después de la creación
+                navigate('/picturesGallery');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const handleFileUpload = (e) => {
 
@@ -62,6 +73,12 @@ const PicturesForm = ({ closeLogin, newPictureForm, setNewPictureForm }) => {
                 setNewPictureForm({ ...newPictureForm, [name]: data.cloudinary_url })
             })
             .catch(err => console.log(err))
+    }
+
+    if (!newPictureForm) {
+        return (
+            <Loading />
+        )
     }
 
     return (

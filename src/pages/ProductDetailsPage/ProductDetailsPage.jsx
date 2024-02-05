@@ -10,6 +10,7 @@ import CarouselComponent from "../../components/SelectecProductsCarousel/Selecte
 import ProductInformation from "../../components/ProductInformation/ProductInformation"
 import { AuthContext } from "../../contexts/auth.context"
 import { ModalContext } from '../../contexts/modal.context'
+import { ProductInformationContext } from '../../contexts/productInformation.context'
 
 
 const ProductDetailsPage = () => {
@@ -17,8 +18,10 @@ const ProductDetailsPage = () => {
   const { product_id } = useParams()
   const [productDetails, setProductDetails] = useState(null)
   const { loggedUser } = useContext(AuthContext)
-  const navigate = useNavigate()
   const { setShowModal, setType, setIsEdition } = useContext(ModalContext)
+  const { newPictureForm, setNewPictureForm, newSculptureForm, setNewSculptureForm, newJewelryForm, setNewJewelryForm } = useContext(ProductInformationContext)
+
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -76,13 +79,13 @@ const ProductDetailsPage = () => {
       .catch((err) => console.log(err));
   };
 
-
   if (!productDetails) {
     return (
       <Loading />
     )
   }
   const images = [productDetails.photo, productDetails.photo2, productDetails.photo3]
+
   return (
     <Container>
       <div className="allInformation">
@@ -94,11 +97,23 @@ const ProductDetailsPage = () => {
       {loggedUser && (
         <>
           <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
-          <Button variant="outline-success" onClick={() => { setShowModal(true); setType(productDetails.product); setIsEdition(true) }}>Editar</Button>
+          <Button variant="outline-success" onClick={() => {
+            setShowModal(true);
+            setType(productDetails.product);
+            setIsEdition(true);
+            if (productDetails.product === "Pictures") {
+              setNewPictureForm(productDetails);
+            } else if (productDetails.product === "Sculptures") {
+              setNewSculptureForm(productDetails);
+            } else if (productDetails.product === "Jewelry") {
+              setNewJewelryForm(productDetails);
+            }
+          }}>Editar</Button>
 
         </>
-      )}
-    </Container>
+      )
+      }
+    </Container >
   )
 }
 export default ProductDetailsPage

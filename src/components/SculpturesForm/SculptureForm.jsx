@@ -1,12 +1,17 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import uploadServices from '../../services/upload.services'
 import sculptureService from '../../services/sculpture.services'
 import MaterialForm from '../SculptureMaterialsForm/SculptureMaterialsForm'
+import { ModalContext } from '../../contexts/modal.context'
+import { ProductInformationContext } from '../../contexts/productInformation.context'
 
 
-const SculptureForm = ({ closeLogin }) => {
+const SculptureForm = () => {
+
+    const { setShowModal, isEdition, showModal } = useContext(ModalContext)
+    const { newSculptureForm, setNewSculptureForm } = useContext(ProductInformationContext)
 
     const navigate = useNavigate()
 
@@ -16,18 +21,26 @@ const SculptureForm = ({ closeLogin }) => {
         setNewSculptureForm({ ...newSculptureForm, [name]: value })
     }
 
-    const handleFromSubmit = e => {
+    const handleFromSubmit = async (e) => {
         e.preventDefault();
-        sculptureService
-            .createSculpture(newSculptureForm)
-            .then(() => {
-                closeLogin()
-                navigate('/sculpturesGallery')
-            })
 
-            .catch(err => console.log(err))
+        try {
+            if (isEdition) {
+                await sculptureService.editSculpture(newSculptureForm);
+                setShowModal(false);  // Cerrar la modal después de editar
+                window.location.reload();
 
-    }
+            } else {
+                await sculptureService.createSculpture(newSculptureForm);
+                setShowModal(false);  // Cerrar la modal después de crear
+                console.log("cierra la modal!!!!")
+                // Navegar a la galería después de la creación
+                navigate('/sculpturesGallery');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const handleFileUpload = (e) => {
 

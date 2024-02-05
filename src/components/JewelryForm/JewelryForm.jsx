@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import uploadServices from '../../services/upload.services'
 import jewelryService from '../../services/jewelry.services'
 import MaterialForm from '../JewelryMaterialForm/JewelryMaterialForm'
+import { ModalContext } from '../../contexts/modal.context'
+import { ProductInformationContext } from '../../contexts/productInformation.context'
 
 
+const JewelryForm = () => {
 
-const JewelryForm = ({ closeLogin }) => {
+    const { setShowModal, isEdition, showModal } = useContext(ModalContext)
+    const { newJewelryForm, setNewJewelryForm } = useContext(ProductInformationContext)
 
     const navigate = useNavigate()
 
@@ -17,16 +21,26 @@ const JewelryForm = ({ closeLogin }) => {
         setNewJewelryForm({ ...newJewelryForm, [name]: value })
     }
 
-    const handleFromSubmit = e => {
+    const handleFromSubmit = async (e) => {
         e.preventDefault();
-        jewelryService
-            .createJewelry(newJewelryForm)
-            .then(() => {
-                closeLogin()
-                navigate('/jewelryGallery')
-            })
-            .catch(err => console.log(err))
-    }
+
+        try {
+            if (isEdition) {
+                await jewelryService.editJewelry(newJewelryForm);
+                setShowModal(false);  // Cerrar la modal después de editar
+                window.location.reload();
+
+            } else {
+                await jewelryService.createJewelry(newJewelryForm);
+                setShowModal(false);  // Cerrar la modal después de crear
+                console.log("cierra la modal!!!!")
+                // Navegar a la galería después de la creación
+                navigate('/jewelryGallery');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const handleFileUpload = (e) => {
 

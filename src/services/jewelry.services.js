@@ -29,6 +29,10 @@ class JewelryService {
         return this.api.get(`/getOneJewelry/${jewelry_id}`)
     }
 
+    editJewelry(jewelryDataForm) {
+        return this.api.post(`/editJewelry/`, jewelryDataForm)
+    }
+
     deleteJewelry(jewelry_id) {
         return this.api.post(`/deleteJewelry/${jewelry_id}`)
     }
