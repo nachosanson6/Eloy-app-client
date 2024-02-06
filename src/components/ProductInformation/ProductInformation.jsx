@@ -2,10 +2,12 @@ import './ProductInformation.css'
 import { ContactModalContext } from '../../contexts/contactModal.context'
 import { useContext } from 'react'
 import MaximiseIcon from './../../images/maximise.svg'
+import Carousel from '../Carousel/Carousel'
 
 const ProductInformation = ({ productDetails }) => {
 
     const { showContactModal, setShowContactModal } = useContext(ContactModalContext)
+    const allPhotos = [productDetails.photo, productDetails.photo2, productDetails.photo3]
 
     let chipContent;
     switch (productDetails.product) {
@@ -23,6 +25,19 @@ const ProductInformation = ({ productDetails }) => {
             break;
     }
 
+    let materials = '';
+    if (productDetails.materials.length === 1) {
+        materials = productDetails.materials[0].toLowerCase();
+    } else if (productDetails.materials.length === 2) {
+        materials = `${productDetails.materials[0].toLowerCase()} y ${productDetails.materials[1].toLowerCase()}`;
+    } else if (productDetails.materials.length > 2) {
+        const lowercaseMaterials = productDetails.materials.map(material => material.toLowerCase());
+        materials = lowercaseMaterials.slice(0, -1).join(', ') + ` y ${lowercaseMaterials.slice(-1)}`;
+    }
+
+    console.log(productDetails)
+
+
     return (
         <div className="productInformation">
             <div className="topFrame">
@@ -35,13 +50,22 @@ const ProductInformation = ({ productDetails }) => {
             </div>
             <div className="bottomFrame">
                 <div className="content">
-                    <div className="carouselFrame">
-                        <div className="imageFrame">
-                            <img className="image" src={productDetails.photo} alt="" />
-                            <img className='icon' src={MaximiseIcon} alt="" />
-                        </div>
-                    </div>
+                    <Carousel photos={allPhotos} />
+                    <div className="textFrame">
+                        <div className="informationFrame">
+                            <h4>Medidas: {productDetails.height} x {productDetails.width}</h4>
+                            {productDetails.prize && (
+                                <h4>Precio: {productDetails.prize}€</h4>
+                            )}
 
+                        </div>
+                        <p className="description">
+                            {chipContent} hecha artesanalmente con {materials} que mide {productDetails.height}cm de altura y {productDetails.width}cm de ancho.
+                            {productDetails.prize && `Tiene un precio de ${productDetails.prize}€`}
+                        </p>
+
+
+                    </div>
                 </div>
 
             </div>
@@ -74,3 +98,21 @@ export default ProductInformation
 //     )}
 
 // </>
+
+
+{/* {productDetails.materials && (
+                                <>
+                                    <h4>Materiales:</h4>
+                                    {productDetails.materials.map((material, index) => (
+                                        <h4 key={index}> - {material}</h4>
+                                    ))}
+                                </>
+                            )}
+                            {productDetails.colors && (
+                                <>
+                                    <h4>Colores:</h4>
+                                    {productDetails.colors.map((material, index) => (
+                                        <h4 key={index}> - {material}</h4>
+                                    ))}
+                                </>
+                            )} */}

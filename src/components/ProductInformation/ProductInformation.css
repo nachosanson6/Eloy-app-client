@@ -5,7 +5,7 @@
     align-items: flex-start;
     gap: 32px;
     align-self: stretch;
-    padding: 2.5rem 7.5rem 0 7.5rem
+    padding: 2.5rem 7.5rem 2.5rem 7.5rem
 }
 
 .productInformation .topFrame {
@@ -45,44 +45,49 @@
 
 .productInformation .bottomFrame .content {
     display: flex;
-    align-items: flex-end;
-    gap: var(--Spacing-s2.5rem, 2.5rem);
+    gap: 2.5rem;
     align-self: stretch;
+    align-items: center;
+
 }
 
-.productInformation .bottomFrame .carouselFrame {
+
+
+.productInformation .bottomFrame .textFrame {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: flex-start;
-    gap: var(--Spacing-s2.5rem, 2.5rem);
+    gap: 2.5rem;
+    flex: 1 0 0;
+    margin-bottom: 15%;
 }
 
-.productInformation .bottomFrame .imageFrame {
-    width: 27.3125rem;
-    height: 28.375rem;
-    position: relative;
-
-}
-
-.productInformation .bottomFrame .imageFrame .image {
-    width: auto;
-    height: 28.375rem;
-    flex-shrink: 0;
-}
-
-.productInformation .bottomFrame .imageFrame .icon {
-    display: inline-flex;
-    padding: 0.25rem;
+.productInformation .bottomFrame .informationFrame {
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 0.625rem;
-    border-radius: 0.1875rem;
-    border: 1px solid var(--Colors-Gold, #BC9C2E);
-    background: #FFF;
-    position: absolute;
-    bottom: 2%;
-    right: 25%;
-    transform: translate(-50%, -50%);
+    gap: 0.5rem;
 }
 
-.productInformation .bottomFrame {}
+.productInformation .bottomFrame .informationFrame h4 {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Familjen Grotesk";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.75rem;
+}
+
+.productInformation .bottomFrame .description {
+    color: var(--Colors-Grey-2, #666);
+    font-feature-settings: 'clig' off, 'liga' off;
+
+    /* Desktop/Main */
+    font-family: "Familjen Grotesk";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    /* 120% */
+}

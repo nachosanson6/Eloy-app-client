@@ -1,17 +1,16 @@
 import { useContext, useEffect, useState } from "react"
-import { Button, Container } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 import pictureService from "../../services/picture.services"
 import { useNavigate, useParams } from "react-router-dom"
 import Loading from "../../components/Loading/Loading"
 import sculptureService from "../../services/sculpture.services"
 import jewelryService from "../../services/jewelry.services"
 import "./ProductDetailsPage.css"
-import CarouselComponent from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
 import ProductInformation from "../../components/ProductInformation/ProductInformation"
 import { AuthContext } from "../../contexts/auth.context"
 import { ModalContext } from '../../contexts/modal.context'
 import { ProductInformationContext } from '../../contexts/productInformation.context'
-
+import './ProductDetailsPage.css'
 
 const ProductDetailsPage = () => {
 
@@ -79,6 +78,7 @@ const ProductDetailsPage = () => {
       .catch((err) => console.log(err));
   };
 
+
   if (!productDetails) {
     return (
       <Loading />
@@ -87,48 +87,29 @@ const ProductDetailsPage = () => {
   const images = [productDetails.photo, productDetails.photo2, productDetails.photo3]
 
   return (
+    <div className="ProductDetailsPage">
 
 
-    <ProductInformation productDetails={productDetails} />
+      <ProductInformation productDetails={productDetails} />
 
-
-
-
-
-
-
-
-
-
-
-
-    // <Container>
-    //   <div className="allInformation">
-    //     <img src={productDetails.photo} alt="" />
-    //     <div className="productInformation" >
-    //       <ProductInformation productDetails={productDetails} />
-    //     </div>
-    //   </div>
-    //   {loggedUser && (
-    //     <>
-    //       <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
-    //       <Button variant="outline-success" onClick={() => {
-    //         setShowModal(true);
-    //         setType(productDetails.product);
-    //         setIsEdition(true);
-    //         if (productDetails.product === "Pictures") {
-    //           setNewPictureForm(productDetails);
-    //         } else if (productDetails.product === "Sculptures") {
-    //           setNewSculptureForm(productDetails);
-    //         } else if (productDetails.product === "Jewelry") {
-    //           setNewJewelryForm(productDetails);
-    //         }
-    //       }}>Editar</Button>
-
-    //     </>
-    //   )
-    //   }
-    // </Container >
+      {loggedUser && (
+        <div className="loggedUserButtons">
+          <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
+          <Button variant="outline-success" onClick={() => {
+            setShowModal(true);
+            setType(productDetails.product);
+            setIsEdition(true);
+            if (productDetails.product === "Pictures") {
+              setNewPictureForm(productDetails);
+            } else if (productDetails.product === "Sculptures") {
+              setNewSculptureForm(productDetails);
+            } else if (productDetails.product === "Jewelry") {
+              setNewJewelryForm(productDetails);
+            }
+          }}>Editar</Button>
+        </div>
+      )}
+    </div>
   )
 }
 export default ProductDetailsPage

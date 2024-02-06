@@ -1,0 +1,51 @@
+#carouselFrame {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 2.5rem;
+    width: 30%;
+
+}
+
+#carouselFrame .imageFrame {
+    width: 100%;
+    height: auto;
+    position: relative;
+
+}
+
+#carouselFrame .imageFrame .image {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+#carouselFrame .imageFrame .icon {
+    display: inline-flex;
+    padding: 0.25rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 0.1875rem;
+    border: 1px solid var(--Colors-Gold, #BC9C2E);
+    background: #FFF;
+    position: absolute;
+    bottom: 2%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+}
+
+#carouselFrame .thumbnails-container {
+    display: flex;
+    align-items: center;
+    gap: 1.0625rem;
+    width: 100%;
+    justify-content: space-evenly
+}
+
+#carouselFrame .thumbnails-container .thumbnail {
+    width: 25%;
+    height: auto;
+    border: 2px solid var(--Colors-Gold-Light, #F0C73B);
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+}
