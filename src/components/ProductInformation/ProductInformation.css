@@ -1,0 +1,88 @@
+.productInformation {
+    display: flex;
+    padding-top: var(--Spacing-s40px, 40px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+    padding: 2.5rem 7.5rem 0 7.5rem
+}
+
+.productInformation .topFrame {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.productInformation .topFrame .backwardsButton {
+    display: flex;
+    width: 39px;
+    padding: 8px;
+    align-items: flex-start;
+    gap: 10px;
+    justify-content: center;
+    border-radius: 3px;
+    border: 1px solid var(--Colors-Gold, #BC9C2E);
+    color: #BC9C2E;
+}
+
+.productInformation .topFrame .titleFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex: 1 0 0;
+}
+
+.productInformation .bottomFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.75rem;
+    align-self: stretch;
+}
+
+.productInformation .bottomFrame .content {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--Spacing-s2.5rem, 2.5rem);
+    align-self: stretch;
+}
+
+.productInformation .bottomFrame .carouselFrame {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: var(--Spacing-s2.5rem, 2.5rem);
+}
+
+.productInformation .bottomFrame .imageFrame {
+    width: 27.3125rem;
+    height: 28.375rem;
+    position: relative;
+
+}
+
+.productInformation .bottomFrame .imageFrame .image {
+    width: auto;
+    height: 28.375rem;
+    flex-shrink: 0;
+}
+
+.productInformation .bottomFrame .imageFrame .icon {
+    display: inline-flex;
+    padding: 0.25rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 0.1875rem;
+    border: 1px solid var(--Colors-Gold, #BC9C2E);
+    background: #FFF;
+    position: absolute;
+    bottom: 2%;
+    right: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.productInformation .bottomFrame {}

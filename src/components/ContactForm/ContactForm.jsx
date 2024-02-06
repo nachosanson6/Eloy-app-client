@@ -7,7 +7,7 @@ function ContactForm() {
     const [state, handleSubmit] = useForm("xnqepayv");
 
     if (state.succeeded) {
-        return <p>Gracias por ponerte en contacto</p>;
+        return <p>Gracias,nos pondremos en contacto con usted lo antes posible</p>;
     }
 
     return (
@@ -39,7 +39,7 @@ function ContactForm() {
                     />
                 </div>
                 <button type="submit" disabled={state.submitting}>
-                    Submit
+                    Enviar
                 </button>
             </form>
         </div>

@@ -87,33 +87,48 @@ const ProductDetailsPage = () => {
   const images = [productDetails.photo, productDetails.photo2, productDetails.photo3]
 
   return (
-    <Container>
-      <div className="allInformation">
-        <img src={productDetails.photo} alt="" />
-        <div className="productInformation" >
-          <ProductInformation productDetails={productDetails} />
-        </div>
-      </div>
-      {loggedUser && (
-        <>
-          <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
-          <Button variant="outline-success" onClick={() => {
-            setShowModal(true);
-            setType(productDetails.product);
-            setIsEdition(true);
-            if (productDetails.product === "Pictures") {
-              setNewPictureForm(productDetails);
-            } else if (productDetails.product === "Sculptures") {
-              setNewSculptureForm(productDetails);
-            } else if (productDetails.product === "Jewelry") {
-              setNewJewelryForm(productDetails);
-            }
-          }}>Editar</Button>
 
-        </>
-      )
-      }
-    </Container >
+
+    <ProductInformation productDetails={productDetails} />
+
+
+
+
+
+
+
+
+
+
+
+
+    // <Container>
+    //   <div className="allInformation">
+    //     <img src={productDetails.photo} alt="" />
+    //     <div className="productInformation" >
+    //       <ProductInformation productDetails={productDetails} />
+    //     </div>
+    //   </div>
+    //   {loggedUser && (
+    //     <>
+    //       <Button variant="outline-danger" onClick={deleteProduct}>Eliminar</Button>
+    //       <Button variant="outline-success" onClick={() => {
+    //         setShowModal(true);
+    //         setType(productDetails.product);
+    //         setIsEdition(true);
+    //         if (productDetails.product === "Pictures") {
+    //           setNewPictureForm(productDetails);
+    //         } else if (productDetails.product === "Sculptures") {
+    //           setNewSculptureForm(productDetails);
+    //         } else if (productDetails.product === "Jewelry") {
+    //           setNewJewelryForm(productDetails);
+    //         }
+    //       }}>Editar</Button>
+
+    //     </>
+    //   )
+    //   }
+    // </Container >
   )
 }
 export default ProductDetailsPage

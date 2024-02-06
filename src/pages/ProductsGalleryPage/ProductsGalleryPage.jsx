@@ -79,7 +79,7 @@ const ProductsGalleryPage = () => {
         <div className="productGalleryPage">
             <Container>
                 <Finder onSearchTermChange={setSearchTerm} />
-                <SelectecProductsCarousel />
+                <SelectecProductsCarousel photos={allProducts} />
                 <VertialLine />
                 <div className="topFrame">
                     <h1>Todos los productos</h1>

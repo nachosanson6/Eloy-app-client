@@ -3,31 +3,11 @@ import Loading from "../Loading/Loading";
 import "./SelectecProductsCarousel.css";
 import allProductsService from "../../services/allProducts.services";
 
-const SelectecProductsCarousel = () => {
-  const [photos, setPhotos] = useState(null)
+const SelectecProductsCarousel = ({ photos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const mainImageRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
 
-
-  useEffect(() => {
-    loadPhotos()
-  }, [])
-
-  const loadPhotos = async () => {
-    try {
-      const { data } = await allProductsService.getAllPhotos();
-      const shuffledPhotos = data.sort(() => Math.random() - 0.5);
-      setPhotos(shuffledPhotos);
-    } catch (error) {
-      console.error("Error loading photos:", error);
-    }
-  };
-
-  // allProductsService
-  //   .getAllPhotos()
-  //   .then(({ data }) => setPhotos(data))
-  //   .catch(err => console.log(err))
 
   const imagesPerPage =
     window.innerWidth >= 768 ? 4 : window.innerWidth >= 480 ? 3 : 2;
@@ -72,9 +52,10 @@ const SelectecProductsCarousel = () => {
                 alt={`Imagen ${currentIndex + i + 1}`}
               />
               <div className="chip">
-                {image.product === 'Pictures' ? 'Pintura' :
-                  image.product === 'Sculptures' ? 'Escultura' :
-                    image.product === 'Jewelry' ? 'Bisutería' : 'Otro'}
+                {image.sold ? 'Vendido' :
+                  image.product === 'Pictures' ? 'Pintura' :
+                    image.product === 'Sculptures' ? 'Escultura' :
+                      image.product === 'Jewelry' ? 'Bisutería' : 'Otro'}
               </div>
             </div>
           ))}

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import "./ProductCard.css"
 
 
-const ProductCard = ({ name, photo, _id, product, height, width, materials, colors }) => {
+const ProductCard = ({ name, photo, _id, product, height, width, materials, colors, sold }) => {
     let chipContent;
     switch (product) {
         case 'Pictures':
@@ -24,7 +24,7 @@ const ProductCard = ({ name, photo, _id, product, height, width, materials, colo
             <div className="card">
                 <Link to={`/productDetails/${_id}`} className="imageLink">
                     <img src={photo} alt="" className="image" />
-                    <p className="chip">{chipContent}</p>
+                    <p className="chip">{sold ? "Vendido" : chipContent}</p>
                 </Link>
             </div>
             <h4 className="productName">{name}</h4>

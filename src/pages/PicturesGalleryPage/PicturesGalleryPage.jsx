@@ -7,10 +7,12 @@ import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/
 import VertialLine from "../../components/VerticalLine/VerticalLine"
 import './PicturesGalleryPage.css'
 import Finder from "../../components/Finder/Finder"
+import allProductsService from "../../services/allProducts.services"
 
 const PicturesGalleryPage = () => {
 
     const [pictures, setPictures] = useState(null)
+    const [photos, setPhotos] = useState(null)
     const [currentPictures, setCurrentPictures] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(15);
@@ -19,6 +21,7 @@ const PicturesGalleryPage = () => {
 
 
     useEffect(() => {
+        loadPhotos()
         loadPictures()
     }, [currentPage, pageSize, searchTerm])
 
@@ -60,6 +63,16 @@ const PicturesGalleryPage = () => {
         }
     };
 
+    const loadPhotos = async () => {
+        try {
+            const { data } = await allProductsService.getAllPhotos();
+            const shuffledPhotos = data.sort(() => Math.random() - 0.5);
+            setPhotos(shuffledPhotos);
+        } catch (error) {
+            console.error("Error loading photos:", error);
+        }
+    };
+
     const handlePageChange = (direction) => {
         if (direction === "prev" && currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1);
@@ -78,11 +91,12 @@ const PicturesGalleryPage = () => {
             <Loading />
         )
     }
+
     return (
         <div className="picturesGalleryPage">
             <Container>
                 <Finder onSearchTermChange={setSearchTerm} />
-                <SelectecProductsCarousel />
+                <SelectecProductsCarousel photos={photos} />
                 <VertialLine />
                 <div className="topFrame">
                     <h1>Todos los cuadros</h1>

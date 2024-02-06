@@ -7,10 +7,12 @@ import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/
 import VertialLine from "../../components/VerticalLine/VerticalLine";
 import './JewelryGalleryPage.css';
 import Finder from "../../components/Finder/Finder";
+import allProductsService from "../../services/allProducts.services"
 
 const JewelryGalleryPage = () => {
 
     const [jewelry, setJewelry] = useState(null);
+    const [photos, setPhotos] = useState(null)
     const [currentJewelry, setCurrentJewelry] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(15);
@@ -18,6 +20,7 @@ const JewelryGalleryPage = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
+        loadPhotos()
         loadJewelry();
     }, [currentPage, pageSize, searchTerm]);
 
@@ -58,6 +61,15 @@ const JewelryGalleryPage = () => {
             setCurrentJewelry(newJewelry);
         }
     };
+    const loadPhotos = async () => {
+        try {
+            const { data } = await allProductsService.getAllPhotos();
+            const shuffledPhotos = data.sort(() => Math.random() - 0.5);
+            setPhotos(shuffledPhotos);
+        } catch (error) {
+            console.error("Error loading photos:", error);
+        }
+    };
 
     const handlePageChange = (direction) => {
         if (direction === "prev" && currentPage > 1) {
@@ -82,7 +94,7 @@ const JewelryGalleryPage = () => {
         <div className="jewelryGalleryPage">
             <Container>
                 <Finder onSearchTermChange={setSearchTerm} />
-                <SelectecProductsCarousel />
+                <SelectecProductsCarousel photos={photos} />
                 <VertialLine />
                 <div className="topFrame">
                     <h1>Toda la bisutería</h1>

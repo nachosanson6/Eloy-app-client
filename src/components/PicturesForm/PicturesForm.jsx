@@ -38,8 +38,6 @@ const PicturesForm = () => {
         setNewPictureForm({ ...newPictureForm, materials: updatedMaterials });
     };
 
-    console.log(isEdition)
-
     const handleFromSubmit = async (e) => {
         e.preventDefault();
 
