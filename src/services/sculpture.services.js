@@ -21,6 +21,10 @@ class SculptureService {
         return this.api.post('/newSculpture', sculptureDataForm)
     }
 
+    getSculpturesPhotos() {
+        return this.api.get('/getSculpturesPhotos')
+    }
+
     getAllSculptures() {
         return this.api.get('/getAllSculptures')
     }

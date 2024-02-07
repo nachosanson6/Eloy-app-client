@@ -21,6 +21,10 @@ class PictureService {
         return this.api.post('/newPicture', pictureDataForm)
     }
 
+    getPicturesPhotos() {
+        return this.api.get('/getPicturesPhotos')
+    }
+
     getAllPictures() {
         return this.api.get('/getAllPictures')
     }

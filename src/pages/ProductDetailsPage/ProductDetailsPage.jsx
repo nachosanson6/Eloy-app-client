@@ -18,7 +18,9 @@ const ProductDetailsPage = () => {
 
   const { product_id } = useParams()
   const [productDetails, setProductDetails] = useState(null)
+  const [carouselElements, setCarouselElements] = useState()
   const { loggedUser } = useContext(AuthContext)
+  const areDetails = true
   const { setShowModal, setType, setIsEdition } = useContext(ModalContext)
   const { newPictureForm, setNewPictureForm, newSculptureForm, setNewSculptureForm, newJewelryForm, setNewJewelryForm } = useContext(ProductInformationContext)
 
@@ -36,6 +38,9 @@ const ProductDetailsPage = () => {
       .then(({ data }) => {
         if (data) {
           setProductDetails(data)
+          return pictureService
+            .getPicturesPhotos()
+            .then(({ data }) => setCarouselElements(data))
         } else {
           return sculptureService.getOneSculpture(product_id)
         }
@@ -43,6 +48,9 @@ const ProductDetailsPage = () => {
       .then(({ data }) => {
         if (data && !productDetails) {
           setProductDetails(data)
+          return sculptureService
+            .getSculpturesPhotos()
+            .then(({ data }) => setCarouselElements(data))
         } else {
           return jewelryService.getOneJewelry(product_id)
         }
@@ -50,6 +58,9 @@ const ProductDetailsPage = () => {
       .then(({ data }) => {
         if (data && !productDetails) {
           setProductDetails(data)
+          return jewelryService
+            .getAllJewelry()
+            .then(({ data }) => setCarouselElements(data))
         }
       })
       .catch((err) => console.log(err))
@@ -96,7 +107,7 @@ const ProductDetailsPage = () => {
 
       <VertialLine />
 
-      {/* <SelectecProductsCarousel /> */}
+      <SelectecProductsCarousel photos={carouselElements} areDetails={areDetails} />
 
       {loggedUser && (
         <div className="loggedUserButtons">

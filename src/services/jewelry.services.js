@@ -25,6 +25,10 @@ class JewelryService {
         return this.api.get('/getAllJewelry')
     }
 
+    getJewelryPhotos() {
+        return this.api.get('/getJewelryPhotos')
+    }
+
     getOneJewelry(jewelry_id) {
         return this.api.get(`/getOneJewelry/${jewelry_id}`)
     }

@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import Loading from "../Loading/Loading";
 import "./SelectecProductsCarousel.css";
 import allProductsService from "../../services/allProducts.services";
+import { Link } from "react-router-dom";
 
-const SelectecProductsCarousel = ({ photos }) => {
+const SelectecProductsCarousel = ({ photos, areDetails }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const mainImageRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
@@ -35,29 +36,36 @@ const SelectecProductsCarousel = ({ photos }) => {
     return <Loading />;
   }
 
+  console.log(photos)
+
   return (
     <>
       <div id="carousel-container" >
-        <h3 className="selectedProduct">Obras destacadas</h3>
+        {areDetails ?
+          <h3 className="selectedProduct">Tambien te puede interesar</h3>
+          :
+          <h3 className="selectedProduct">Obras destacadas</h3>
+        }
         <div id="main-image-container">
           {photos.slice(currentIndex, currentIndex + imagesPerPage).map((image, i) => (
-            <div
-              key={i}
-              className={`carousel-image-container ${i === 0 ? 'active' : ''}`}
-              onClick={() => showImage(i)}
-            >
-              <img
-                className="carousel-image"
-                src={image.photo}
-                alt={`Imagen ${currentIndex + i + 1}`}
-              />
-              <div className="chip">
-                {image.sold ? 'Vendido' :
-                  image.product === 'Pictures' ? 'Pintura' :
-                    image.product === 'Sculptures' ? 'Escultura' :
-                      image.product === 'Jewelry' ? 'Bisutería' : 'Otro'}
+            <Link to={`/productDetails/${image._id}`} key={i}>
+              <div
+                className={`carousel-image-container ${i === 0 ? 'active' : ''}`}
+
+              >
+                <img
+                  className="carousel-image"
+                  src={image.photo}
+                  alt={`Imagen ${currentIndex + i + 1}`}
+                />
+                <div className="chip">
+                  {image.sold ? 'Vendido' :
+                    image.product === 'Pictures' ? 'Pintura' :
+                      image.product === 'Sculptures' ? 'Escultura' :
+                        image.product === 'Jewelry' ? 'Bisutería' : 'Otro'}
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="buttons">
