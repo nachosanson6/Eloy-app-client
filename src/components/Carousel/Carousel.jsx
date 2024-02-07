@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import "./Carousel.css";
 import MaximiseIcon from './../../images/maximise.svg'
+import { Modal } from "react-bootstrap";
 
 
 const Carousel = ({ photos }) => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const filteredPhotos = photos.filter(image => image);
+    const [showPhotoModal, setShowPhotoModal] = useState(false);
+
 
     const selectImage = (index) => {
         setSelectedImageIndex(index);
+    };
+
+    const openModal = () => {
+        setShowPhotoModal(true);
+    };
+
+    const closeModal = () => {
+        setShowPhotoModal(false);
     };
 
     // Renderizar solo una imagen si hay solo una foto en el array
@@ -21,9 +32,17 @@ const Carousel = ({ photos }) => {
                         src={filteredPhotos[0]} // Renderiza la única foto
                         alt="Imagen"
                     />
-                    <img className='icon' src={MaximiseIcon} alt="" />
+                    <img className='icon' src={MaximiseIcon} onClick={openModal} alt="" />
                 </div>
+                <Modal show={showPhotoModal} onHide={() => setShowPhotoModal(false)}>
+                    <Modal.Body>
+                        <img src={filteredPhotos[0]} alt="" />
+                        <div className="close" onClick={() => setShowPhotoModal(false)}>X</div>
+                    </Modal.Body>
+
+                </Modal>
             </div>
+
         );
     } else {
 
@@ -49,9 +68,12 @@ const Carousel = ({ photos }) => {
                         />
                     ))}
                 </div>
+
             </div>
+
         )
     }
+
 
 };
 

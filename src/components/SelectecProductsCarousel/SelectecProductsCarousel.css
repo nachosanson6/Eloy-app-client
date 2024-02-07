@@ -4,7 +4,7 @@
   align-items: flex-start;
   gap: 2rem;
   align-self: stretch;
-  padding: 0 1.5rem 0 1.5rem;
+  padding: 0 1.5rem 2.5rem 1.5rem;
 }
 
 #carousel-container .selectedProduct {
@@ -93,7 +93,7 @@
 @media screen and (min-width: 480px) {
   #carousel-container {
     gap: var(--Spacing-s2.5rem, 2rem);
-    padding: 0 5rem 0 5rem;
+    padding: 0 5rem 2.5rem 5rem;
   }
 
   #carousel-container #main-image-container {
@@ -118,7 +118,7 @@
 /* Desktop */
 @media screen and (min-width: 768px) {
   #carousel-container {
-    padding: 0 7.5rem 0 7.5rem;
+    padding: 0 7.5rem 2.5rem 7.5rem;
   }
 
   #carousel-container #main-image-container {

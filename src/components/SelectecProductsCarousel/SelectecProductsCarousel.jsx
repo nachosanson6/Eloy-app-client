@@ -42,7 +42,7 @@ const SelectecProductsCarousel = ({ photos, areDetails }) => {
     <>
       <div id="carousel-container" >
         {areDetails ?
-          <h3 className="selectedProduct">Tambien te puede interesar</h3>
+          <h3 className="selectedProduct">También te podría interesar</h3>
           :
           <h3 className="selectedProduct">Obras destacadas</h3>
         }
