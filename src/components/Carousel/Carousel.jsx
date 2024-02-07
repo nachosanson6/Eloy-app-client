@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Carousel.css";
 import MaximiseIcon from './../../images/maximise.svg'
 import { Modal } from "react-bootstrap";
+import PhotoModal from "../PhotoModal/PhotoModal";
 
 
 const Carousel = ({ photos }) => {
@@ -34,13 +35,11 @@ const Carousel = ({ photos }) => {
                     />
                     <img className='icon' src={MaximiseIcon} onClick={openModal} alt="" />
                 </div>
-                <Modal show={showPhotoModal} onHide={() => setShowPhotoModal(false)}>
-                    <Modal.Body>
-                        <img src={filteredPhotos[0]} alt="" />
-                        <div className="close" onClick={() => setShowPhotoModal(false)}>X</div>
-                    </Modal.Body>
-
-                </Modal>
+                <PhotoModal
+                    show={showPhotoModal}
+                    onClose={closeModal}
+                    imageUrl={filteredPhotos[0]}
+                />
             </div>
 
         );
@@ -55,7 +54,7 @@ const Carousel = ({ photos }) => {
                         src={photos[selectedImageIndex]}
                         alt={`Imagen ${selectedImageIndex + 1}`}
                     />
-                    <img className='icon' src={MaximiseIcon} alt="" />
+                    <img className='icon' src={MaximiseIcon} onClick={openModal} alt="" />
                 </div>
                 <div className="thumbnails-container">
                     {photos.map((image, index) => (
