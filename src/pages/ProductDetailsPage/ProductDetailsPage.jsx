@@ -11,6 +11,8 @@ import { AuthContext } from "../../contexts/auth.context"
 import { ModalContext } from '../../contexts/modal.context'
 import { ProductInformationContext } from '../../contexts/productInformation.context'
 import './ProductDetailsPage.css'
+import VertialLine from "../../components/VerticalLine/VerticalLine"
+import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
 
 const ProductDetailsPage = () => {
 
@@ -91,6 +93,10 @@ const ProductDetailsPage = () => {
 
 
       <ProductInformation productDetails={productDetails} />
+
+      <VertialLine />
+
+      {/* <SelectecProductsCarousel /> */}
 
       {loggedUser && (
         <div className="loggedUserButtons">
