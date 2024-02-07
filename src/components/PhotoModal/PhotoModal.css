@@ -1,4 +1,4 @@
-.modal-overlay {
+.photoModal .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,18 +11,16 @@
     z-index: 100;
 }
 
-.modal-content {
+.photoModal .modal-content {
     position: relative;
     background-color: white;
-    border: 2px solid;
     border-radius: 5px;
     height: 90vh;
-
     width: auto !important;
     max-width: 90vw;
 }
 
-.closeButton {
+.photoModal .closeButton {
     position: absolute;
     top: 3px;
     right: 10px;
@@ -30,7 +28,7 @@
     font-size: 20px;
 }
 
-img {
+.photoModal img {
     width: auto;
     max-height: 100%;
     object-fit: contain;
@@ -40,25 +38,16 @@ img {
 
 
 /* Tablet */
-/* @media screen and (max-width: 768px) {
-    .modal-content {
-        position: relative;
-        background-color: white;
-        border: 2px solid;
-        border-radius: 5px;
-        height: auto;
-        width: 90vw;
+@media screen and (max-width: 768px) {
+    .photoModal .modal-overlay {
+        align-items: flex-start;
     }
-} */
+
+    .photoModal .modal-content {
+        margin-top: 10%;
+        height: auto;
+    }
+}
 
 /* Movil */
-/* @media screen and (max-width: 480px) {
-    .modal-content {
-        position: relative;
-        background-color: white;
-        border: 2px solid;
-        border-radius: 5px;
-        height: auto;
-        width: 90vw;
-    }
-} */
+@media screen and (max-width: 480px) {}

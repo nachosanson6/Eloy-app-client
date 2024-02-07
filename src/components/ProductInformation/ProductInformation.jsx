@@ -35,9 +35,6 @@ const ProductInformation = ({ productDetails }) => {
         materials = lowercaseMaterials.slice(0, -1).join(', ') + ` y ${lowercaseMaterials.slice(-1)}`;
     }
 
-    console.log(productDetails)
-
-
     return (
         <div className="productInformation">
             <div className="topFrame">

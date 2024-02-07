@@ -59,7 +59,7 @@ const ProductDetailsPage = () => {
         if (data && !productDetails) {
           setProductDetails(data)
           return jewelryService
-            .getAllJewelry()
+            .getJewelryPhotos()
             .then(({ data }) => setCarouselElements(data))
         }
       })
@@ -99,15 +99,19 @@ const ProductDetailsPage = () => {
   }
   const images = [productDetails.photo, productDetails.photo2, productDetails.photo3]
 
+
   return (
     <div className="ProductDetailsPage">
 
 
       <ProductInformation productDetails={productDetails} />
 
-      <VertialLine />
-
-      <SelectecProductsCarousel photos={carouselElements} areDetails={areDetails} />
+      {carouselElements && carouselElements.length > 0 && (
+        <>
+          <VertialLine />
+          <SelectecProductsCarousel photos={carouselElements} areDetails={areDetails} />
+        </>
+      )}
 
       {loggedUser && (
         <div className="loggedUserButtons">

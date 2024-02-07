@@ -36,8 +36,6 @@ const SelectecProductsCarousel = ({ photos, areDetails }) => {
     return <Loading />;
   }
 
-  console.log(photos)
-
   return (
     <>
       <div id="carousel-container" >
