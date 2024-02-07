@@ -56,6 +56,11 @@ const Carousel = ({ photos }) => {
                     />
                     <img className='icon' src={MaximiseIcon} onClick={openModal} alt="" />
                 </div>
+                <PhotoModal
+                    show={showPhotoModal}
+                    onClose={closeModal}
+                    imageUrl={photos[selectedImageIndex]}
+                />
                 <div className="thumbnails-container">
                     {photos.map((image, index) => (
                         <img
