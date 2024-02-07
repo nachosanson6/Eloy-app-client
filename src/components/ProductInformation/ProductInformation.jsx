@@ -41,10 +41,11 @@ const ProductInformation = ({ productDetails }) => {
     return (
         <div className="productInformation">
             <div className="topFrame">
-                <button className='backwardsButton' onClick={() => window.history.back()}>&lt;</button>
+                <div className="buttonFrame">
+                    <button className='backwardsButton' onClick={() => window.history.back()}>&lt;</button>
+                </div>
                 <div className="titleFrame">
                     <h3>{productDetails.name}</h3>
-                    <p>{chipContent}</p>
                 </div>
                 <button onClick={() => { setShowContactModal(true) }} className='contactButton'>Contactar con Eloy</button>
             </div>

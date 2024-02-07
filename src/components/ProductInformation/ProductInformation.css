@@ -1,6 +1,5 @@
 .productInformation {
     display: flex;
-    padding-top: var(--Spacing-s40px, 40px);
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
@@ -82,12 +81,106 @@
 .productInformation .bottomFrame .description {
     color: var(--Colors-Grey-2, #666);
     font-feature-settings: 'clig' off, 'liga' off;
-
-    /* Desktop/Main */
     font-family: "Familjen Grotesk";
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5rem;
-    /* 120% */
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+    .productInformation {
+        padding: 2.5rem 5rem 0 5rem;
+    }
+
+    .productInformation .topFrame {
+        align-items: center;
+    }
+
+    .productInformation .bottomFrame .content {
+        align-items: flex-start;
+    }
+
+    .productInformation .bottomFrame .textFrame {
+        align-items: flex-start;
+
+    }
+
+    .productInformation .topFrame .titleFrame {
+        text-align: center;
+        /* Centrar texto */
+    }
+
+
+    .productInformation .bottomFrame .textFrame .informationFrame {
+        text-align: center;
+        /* Centrar texto */
+    }
+
+    .productInformation .bottomFrame .carouselContainer {
+        width: 100%;
+        /* Ajustar ancho del carrusel */
+    }
+}
+
+/* Movil */
+@media screen and (max-width: 480px) {
+    .productInformation {
+        padding: 2.5rem 1.5rem 0 1.5rem;
+    }
+
+    .productInformation .topFrame {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start
+    }
+
+    .productInformation .topFrame .backwardsButton {
+        display: flex;
+        width: 39px;
+        padding: 8px;
+        align-items: flex-start;
+        align-self: flex-start !important;
+        gap: 10px;
+        justify-content: center;
+        border-radius: 3px;
+        border: 1px solid var(--Colors-Gold, #BC9C2E);
+        color: #BC9C2E;
+    }
+
+    .productInformation .topFrame .buttonFrame {
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+    }
+
+    /* .productInformation .topFrame .contactButton {
+        margin-left: 25%;
+    } */
+
+    .productInformation .bottomFrame .content {
+        align-items: flex-start;
+    }
+
+    .productInformation .bottomFrame .textFrame {
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .productInformation .bottomFrame .textFrame .informationFrame {
+        display: flex;
+    }
+
+    .productInformation .bottomFrame .informationFrame h4 {
+        font-size: 1.2rem;
+    }
+
+    .productInformation .bottomFrame .description {
+        font-size: 1rem;
+    }
+
+    .productInformation .bottomFrame .carouselContainer {
+        width: 100%;
+    }
 }

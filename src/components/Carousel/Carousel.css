@@ -49,3 +49,36 @@
     border: 2px solid var(--Colors-Gold-Light, #F0C73B);
     background: url(<path-to-image>), lightgray 50% / cover no-repeat;
 }
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+    #carouselFrame .imageFrame .icon {
+        display: inline-flex;
+        padding: 0.25rem;
+        align-items: flex-start;
+        gap: 0.625rem;
+        border-radius: 0.1875rem;
+        border: 1px solid var(--Colors-Gold, #BC9C2E);
+        background: #FFF;
+        position: absolute;
+        bottom: 2%;
+        right: 5%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Movil */
+@media screen and (max-width: 480px) {
+    #carouselFrame {
+        width: 40%;
+    }
+
+    #carouselFrame .imageFrame .icon {
+        transform: scale(0.8);
+        padding: 0.125rem;
+        gap: 0.3125rem;
+        bottom: 0.1rem;
+        right: 0.5%;
+
+    }
+}
