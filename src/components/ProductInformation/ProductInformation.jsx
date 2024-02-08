@@ -40,12 +40,16 @@ const ProductInformation = ({ productDetails }) => {
             <div className="topFrame">
                 <div className="buttonFrame">
                     <button className='backwardsButton' onClick={() => window.history.back()}>&lt;</button>
+                    {window.innerWidth <= 480 &&
+                        <button onClick={() => { setShowContactModal(true) }} className='contactButton'>Contactar con Eloy</button>
+                    }
                 </div>
                 <div className="titleFrame">
                     <h3>{productDetails.name}</h3>
                 </div>
-                <button onClick={() => { setShowContactModal(true) }} className='contactButton'>Contactar con Eloy</button>
-            </div>
+                {window.innerWidth >= 480 &&
+                    <button onClick={() => { setShowContactModal(true) }} className='contactButton'>Contactar con Eloy</button>
+                }            </div>
             <div className="bottomFrame">
                 <div className="content">
                     <Carousel photos={allPhotos} />

@@ -14,6 +14,8 @@
     align-self: stretch;
 }
 
+.productInformation .topFrame .buttonFrame {}
+
 .productInformation .topFrame .backwardsButton {
     display: flex;
     width: 39px;
@@ -133,7 +135,7 @@
     .productInformation .topFrame {
         display: flex;
         flex-direction: column;
-        align-items: flex-start
+        align-items: stretch
     }
 
     .productInformation .topFrame .backwardsButton {
@@ -150,14 +152,12 @@
     }
 
     .productInformation .topFrame .buttonFrame {
-        display: flex !important;
-        justify-content: flex-start !important;
-        align-items: flex-start !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    /* .productInformation .topFrame .contactButton {
-        margin-left: 25%;
-    } */
+
 
     .productInformation .bottomFrame .content {
         align-items: flex-start;
