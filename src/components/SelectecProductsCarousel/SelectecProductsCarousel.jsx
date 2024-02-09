@@ -11,7 +11,7 @@ const SelectecProductsCarousel = ({ photos, areDetails }) => {
 
 
   const imagesPerPage =
-    window.innerWidth >= 768 ? 4 : window.innerWidth >= 480 ? 3 : 2;
+    window.innerWidth >= 1200 ? 4 : window.innerWidth >= 480 ? 3 : 2;
 
   const showImages = (startIndex) => {
     const endIndex = Math.min(startIndex + imagesPerPage, photos.length);
