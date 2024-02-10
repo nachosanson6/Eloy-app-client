@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
+    "@vercel/speed-insights": "^1.0.9",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "medium-zoom": "^1.1.0",
