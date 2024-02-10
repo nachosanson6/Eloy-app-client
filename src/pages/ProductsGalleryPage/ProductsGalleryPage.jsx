@@ -20,6 +20,7 @@ const ProductsGalleryPage = () => {
 
     useEffect(() => {
         loadProducts();
+        handleScroll(); // Aquí agregamos el desplazamiento
     }, [currentPage, pageSize, searchTerm]);
 
     const loadProducts = () => {
@@ -58,18 +59,32 @@ const ProductsGalleryPage = () => {
         }
     };
 
+    const handleScroll = () => {
+        setTimeout(() => {
+            const topFrameElement = document.getElementById('topFrame');
+            if (topFrameElement) {
+                topFrameElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 0);
+    };
+
     const handlePageChange = (direction) => {
         if (direction === "prev" && currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1);
+            handleScroll();
         } else if (direction === "next" && currentProducts.length === pageSize) {
             setCurrentPage((prevPage) => prevPage + 1);
+            handleScroll();
         }
     };
+
 
     const handlePageSizeChange = (event) => {
         setPageSize(parseInt(event.target.value, 10));
         setCurrentPage(1);
     };
+
+
 
     if (initialLoad) {
         return <Loading />;
@@ -81,7 +96,7 @@ const ProductsGalleryPage = () => {
                 <Finder onSearchTermChange={setSearchTerm} />
                 <SelectecProductsCarousel photos={allProducts} />
                 <VertialLine />
-                <div className="topFrame">
+                <div id="topFrame" className="topFrame">
                     <h1>Todos los productos</h1>
                     <div className="pageSelection">
                         <select id="pageSize" value={pageSize} onChange={handlePageSizeChange}>

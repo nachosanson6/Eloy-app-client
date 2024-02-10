@@ -22,6 +22,7 @@ const SculpturesGalleryPage = () => {
     useEffect(() => {
         loadPhotos()
         loadSculptures();
+        handleScroll();
     }, [currentPage, pageSize, searchTerm]);
 
     const loadSculptures = () => {
@@ -71,11 +72,22 @@ const SculpturesGalleryPage = () => {
         }
     };
 
+    const handleScroll = () => {
+        setTimeout(() => {
+            const topFrameElement = document.getElementById('topFrame');
+            if (topFrameElement) {
+                topFrameElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 0);
+    };
+
     const handlePageChange = (direction) => {
         if (direction === "prev" && currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1);
+            handleScroll();
         } else if (direction === "next" && currentProducts.length === pageSize) {
             setCurrentPage((prevPage) => prevPage + 1);
+            handleScroll();
         }
     };
 
@@ -96,7 +108,7 @@ const SculpturesGalleryPage = () => {
                 <Finder onSearchTermChange={setSearchTerm} />
                 <SelectecProductsCarousel photos={photos} />
                 <VertialLine />
-                <div className="topFrame">
+                <div id="topFrame" className="topFrame">
                     <h1>Todas las esculturas</h1>
                     <div className="pageSelection">
                         <select id="pageSize" value={pageSize} onChange={handlePageSizeChange}>

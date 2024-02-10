@@ -36,7 +36,7 @@ const ProductInformation = ({ productDetails }) => {
     }
 
     return (
-        <div className="productInformation">
+        <div id="productInformation" className="productInformation">
             <div className="topFrame">
                 <div className="buttonFrame">
                     <button className='backwardsButton' onClick={() => window.history.back()}>&lt;</button>

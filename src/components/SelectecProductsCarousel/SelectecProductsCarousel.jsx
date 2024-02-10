@@ -31,6 +31,11 @@ const SelectecProductsCarousel = ({ photos, areDetails }) => {
     showImages(prevIndex);
   };
 
+  const handleSCroll = () => {
+    // Hacer scroll automático a la parte de ProductInformation
+    document.getElementById('productInformation').scrollIntoView({ behavior: 'smooth' });
+  };
+
 
   if (!photos) {
     return <Loading />;
@@ -49,7 +54,7 @@ const SelectecProductsCarousel = ({ photos, areDetails }) => {
             <Link to={`/productDetails/${image._id}`} key={i}>
               <div
                 className={`carousel-image-container ${i === 0 ? 'active' : ''}`}
-
+                onClick={handleSCroll}
               >
                 <img
                   className="carousel-image"

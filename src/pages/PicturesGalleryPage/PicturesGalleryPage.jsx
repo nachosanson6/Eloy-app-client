@@ -23,6 +23,7 @@ const PicturesGalleryPage = () => {
     useEffect(() => {
         loadPhotos()
         loadPictures()
+        handleScroll();
     }, [currentPage, pageSize, searchTerm])
 
     const loadPictures = () => {
@@ -73,11 +74,22 @@ const PicturesGalleryPage = () => {
         }
     };
 
+    const handleScroll = () => {
+        setTimeout(() => {
+            const topFrameElement = document.getElementById('topFrame');
+            if (topFrameElement) {
+                topFrameElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 0);
+    };
+
     const handlePageChange = (direction) => {
         if (direction === "prev" && currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1);
-        } else if (direction === "next" && currentPictures.length === pageSize) {
+            handleScroll();
+        } else if (direction === "next" && currentProducts.length === pageSize) {
             setCurrentPage((prevPage) => prevPage + 1);
+            handleScroll();
         }
     };
 
@@ -98,7 +110,7 @@ const PicturesGalleryPage = () => {
                 <Finder onSearchTermChange={setSearchTerm} />
                 <SelectecProductsCarousel photos={photos} />
                 <VertialLine />
-                <div className="topFrame">
+                <div id="topFrame" className="topFrame">
                     <h1>Todos los cuadros</h1>
                     <div className="pageSelection">
                         <select id="pageSize" value={pageSize} onChange={handlePageSizeChange}>
