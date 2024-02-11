@@ -111,7 +111,7 @@ const PicturesGalleryPage = () => {
                 <SelectecProductsCarousel photos={photos} />
                 <VertialLine />
                 <div id="topFrame" className="topFrame">
-                    <h1>Todos los cuadros</h1>
+                    <h1>Todas las pinturas</h1>
                     <div className="pageSelection">
                         <select id="pageSize" value={pageSize} onChange={handlePageSizeChange}>
                             {[15, 30, 45].map((size) => (
