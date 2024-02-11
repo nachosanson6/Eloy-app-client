@@ -15,7 +15,7 @@ const About = () => {
                 <div className="text">
                     <h4 className="artistName"> Eloy Sansón Kauffman</h4>
                     <p className="artistDescription">
-                        Eloy inicia su vena artística cuando se prejubila en 2013. Después de un largo descanso, se dio cuenta que los días se hacían largos si no tenía una ocupación y se preguntó: ¿Y ahora qué hago?
+                        Inicia su vena artística cuando se prejubila en 2013. Después de un largo descanso, se dio cuenta que los días se hacían largos si no tenía una ocupación y se preguntó: ¿Y ahora qué hago?
                         <br /> <br />
                         Estas eran las alternativas, a saber: <br />
                         - Buscar a otras personas para jugar al dominó o a la petanca. <br />
