@@ -49,7 +49,6 @@ const SelectecProductsCarousel = ({ photos, areDetails }) => {
             <Link to={`/productDetails/${image._id}`} key={i}>
               <div
                 className={`carousel-image-container ${i === 0 ? 'active' : ''}`}
-
               >
                 <img
                   className="carousel-image"

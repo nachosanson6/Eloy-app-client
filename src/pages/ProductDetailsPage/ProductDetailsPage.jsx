@@ -98,7 +98,7 @@ const ProductDetailsPage = () => {
     )
   }
   const images = [productDetails.photo, productDetails.photo2, productDetails.photo3]
-
+  console.log(productDetails)
 
   return (
     <div className="ProductDetailsPage">

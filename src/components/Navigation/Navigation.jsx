@@ -80,7 +80,6 @@ const Navigation = () => {
 
                             <Link to={'/'} className='btn'>El artista</Link>
 
-                            {/* <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link> */}
                         </div>
 
                         {(!loggedUser && url.includes(`${apiUrl}/admin`)) && (

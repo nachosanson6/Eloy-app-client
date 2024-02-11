@@ -1,10 +1,11 @@
 footer {
     display: flex;
-    width: 100vw;
+    max-width: 100vw;
     padding: var(--Spacing-s40px, 40px) var(--Layout-General-Margin, 120px);
     justify-content: space-between;
     border-bottom: 2px solid rgba(188, 156, 46, 0.00);
     background: var(--Colors-Black, #222);
+
 }
 
 .information {
