@@ -27,7 +27,7 @@ const Finder = ({ onSearchTermChange }) => {
                 <Link to={'/productsGallery'} className='btn'>Todos</Link>
                 <Link to={'/picturesGallery'} className='btn'>Pintura</Link>
                 <Link to={'/sculpturesGallery'} className='btn'>Escultura</Link>
-                <Link to={'/jewelryGallery'} className='btn'>Joyería</Link>
+                <Link to={'/jewelryGallery'} className='btn'>Bisutería</Link>
             </div>
         </div >
     )
