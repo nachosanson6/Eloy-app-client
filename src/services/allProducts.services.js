@@ -23,6 +23,9 @@ class AllProductsService {
     getAllProducts() {
         return this.api.get('/getAllProducts');
     }
+    getOneProduct(product_id) {
+        return this.api.get(`/getOneProduct/${product_id}`);
+    }
 }
 const allProductsService = new AllProductsService()
 export default allProductsService

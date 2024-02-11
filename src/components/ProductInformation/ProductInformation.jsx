@@ -36,7 +36,7 @@ const ProductInformation = ({ productDetails }) => {
     }
 
     return (
-        <div className="productInformation">
+        <div id="productInformation" className="productInformation">
             <div className="topFrame">
                 <div className="buttonFrame">
                     <button className='backwardsButton' onClick={() => window.history.back()}>&lt;</button>
@@ -76,45 +76,3 @@ const ProductInformation = ({ productDetails }) => {
 }
 
 export default ProductInformation
-
-
-// <>
-//     <h2>{productDetails.name}</h2>
-//     <h3>Medidas: {productDetails.height} x {productDetails.width}</h3>
-
-//     {productDetails.materials && (
-//         <>
-//             <h3>Materiales:</h3>
-//             {productDetails.materials.map((material, index) => (
-//                 <h4 key={index}> - {material}</h4>
-//             ))}
-//         </>
-//     )}
-//     {productDetails.colors && (
-//         <>
-//             <h3>Colores:</h3>
-//             {productDetails.colors.map((material, index) => (
-//                 <h4 key={index}> - {material}</h4>
-//             ))}
-//         </>
-//     )}
-
-// </>
-
-
-{/* {productDetails.materials && (
-                                <>
-                                    <h4>Materiales:</h4>
-                                    {productDetails.materials.map((material, index) => (
-                                        <h4 key={index}> - {material}</h4>
-                                    ))}
-                                </>
-                            )}
-                            {productDetails.colors && (
-                                <>
-                                    <h4>Colores:</h4>
-                                    {productDetails.colors.map((material, index) => (
-                                        <h4 key={index}> - {material}</h4>
-                                    ))}
-                                </>
-                            )} */}

@@ -13,6 +13,7 @@ import { ProductInformationContext } from '../../contexts/productInformation.con
 import './ProductDetailsPage.css'
 import VertialLine from "../../components/VerticalLine/VerticalLine"
 import SelectecProductsCarousel from "../../components/SelectecProductsCarousel/SelectecProductsCarousel"
+import allProductsService from "../../services/allProducts.services"
 
 const ProductDetailsPage = () => {
 
@@ -33,39 +34,14 @@ const ProductDetailsPage = () => {
 
   const loadProductDetails = () => {
 
-    pictureService
-      .getOnePicture(product_id)
+    allProductsService
+      .getOneProduct(product_id)
       .then(({ data }) => {
-        if (data) {
-          setProductDetails(data)
-          return pictureService
-            .getPicturesPhotos()
-            .then(({ data }) => setCarouselElements(data))
-        } else {
-          return sculptureService.getOneSculpture(product_id)
-        }
+        setCarouselElements(data.carouselElements)
+        setProductDetails(data.productDetails)
       })
-      .then(({ data }) => {
-        if (data && !productDetails) {
-          setProductDetails(data)
-          return sculptureService
-            .getSculpturesPhotos()
-            .then(({ data }) => setCarouselElements(data))
-        } else {
-          return jewelryService.getOneJewelry(product_id)
-        }
-      })
-      .then(({ data }) => {
-        if (data && !productDetails) {
-          setProductDetails(data)
-          return jewelryService
-            .getJewelryPhotos()
-            .then(({ data }) => setCarouselElements(data))
-        }
-      })
-      .catch((err) => console.log(err))
-  }
 
+  }
 
   const deleteProduct = () => {
     pictureService.deletePicture(product_id)

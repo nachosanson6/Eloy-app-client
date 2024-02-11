@@ -2,6 +2,8 @@ import './App.css'
 import Footer from './components/Footer/Footer'
 import Navigation from './components/Navigation/Navigation'
 import AppRoutes from './routes/AppRoutes'
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
 
@@ -10,7 +12,8 @@ function App() {
       <Navigation />
       <AppRoutes />
       <Footer />
-
+      <SpeedInsights />
+      <Analytics />
     </>
   )
 }
