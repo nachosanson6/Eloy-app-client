@@ -1,5 +1,5 @@
 import './About.css'
-import artistPicture from './../../images/image 12.svg'
+import artistPicture from './../../images/IMG_7306.jpeg'
 import { ContactModalContext } from '../../contexts/contactModal.context'
 import { useContext } from 'react'
 

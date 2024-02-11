@@ -27,7 +27,7 @@
 }
 
 .artistPicture {
-    width: 17.125rem;
+    width: auto;
     height: 17.8125rem;
 
 }
@@ -120,7 +120,7 @@
     }
 
     .artistPicture {
-        width: 27.3125rem;
+        width: auto;
         height: 28.375rem;
 
     }
