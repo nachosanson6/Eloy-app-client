@@ -106,8 +106,7 @@ const JewelryGalleryPage = () => {
         <div className="jewelryGalleryPage">
             <Container>
                 <Finder onSearchTermChange={setSearchTerm} />
-                <SelectecProductsCarousel photos={photos} />
-                <VertialLine />
+
                 <div id="topFrame" className="topFrame">
                     <h1>Toda la bisutería</h1>
                     <div className="pageSelection">
@@ -133,6 +132,8 @@ const JewelryGalleryPage = () => {
                         &gt;
                     </Button>
                 </div>
+                <VertialLine />
+                <SelectecProductsCarousel photos={photos} />
             </Container>
         </div>
     );

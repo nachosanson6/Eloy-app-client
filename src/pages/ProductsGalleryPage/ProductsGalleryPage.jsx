@@ -94,8 +94,7 @@ const ProductsGalleryPage = () => {
         <div className="productGalleryPage">
             <Container>
                 <Finder onSearchTermChange={setSearchTerm} />
-                <SelectecProductsCarousel photos={allProducts} />
-                <VertialLine />
+
                 <div id="topFrame" className="topFrame">
                     <h1>Todos los productos</h1>
                     <div className="pageSelection">
@@ -122,6 +121,8 @@ const ProductsGalleryPage = () => {
                         &gt;
                     </Button>
                 </div>
+                <VertialLine />
+                <SelectecProductsCarousel photos={allProducts} />
             </Container>
         </div>
     );
