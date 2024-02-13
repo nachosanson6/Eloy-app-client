@@ -25,6 +25,7 @@
     border-radius: 3px;
     border: 1px solid var(--Colors-Gold, #BC9C2E);
     color: #BC9C2E;
+    text-decoration: none;
 }
 
 .productInformation .topFrame .titleFrame {

@@ -3,6 +3,7 @@ import { ContactModalContext } from '../../contexts/contactModal.context'
 import { useContext } from 'react'
 import MaximiseIcon from './../../images/maximise.svg'
 import Carousel from '../Carousel/Carousel'
+import { Link } from 'react-router-dom'
 
 const ProductInformation = ({ productDetails }) => {
 
@@ -35,11 +36,33 @@ const ProductInformation = ({ productDetails }) => {
         materials = lowercaseMaterials.slice(0, -1).join(', ') + ` y ${lowercaseMaterials.slice(-1)}`;
     }
 
+    let galleryLink = '';
+
+    // Definir la URL de destino según el tipo de producto
+    switch (productDetails.product) {
+        case 'Pictures':
+            galleryLink = '/picturesGallery';
+            break;
+        case 'Sculptures':
+            galleryLink = '/sculpturesGallery';
+            break;
+        case 'Jewelry':
+            galleryLink = '/jewelryGallery';
+            break;
+        default:
+            // Si el tipo de producto no coincide con ninguno de los casos anteriores, 
+            // puedes redirigirlo a una página de error o a una galería por defecto
+            galleryLink = '/defaultGallery';
+            break;
+    }
+
     return (
         <div id="productInformation" className="productInformation">
             <div className="topFrame">
                 <div className="buttonFrame">
-                    <button className='backwardsButton' onClick={() => window.history.back()}>&lt;</button>
+                    <Link to={galleryLink} className='backwardsButton'>
+                        &lt;
+                    </Link>
                     {window.innerWidth <= 480 &&
                         <button onClick={() => { setShowContactModal(true) }} className='contactButton'>Contactar con Eloy</button>
                     }
