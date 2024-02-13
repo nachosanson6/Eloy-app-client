@@ -28,7 +28,9 @@ const ProductCard = ({ name, photo, _id, product, height, width, materials, colo
                 </Link>
             </div>
             <h4 className="productName">{name}</h4>
-            <p className="productDetails" >{height} x {width}</p>
+            {height &&
+                <p className="productDetails" >{height} x {width}</p>
+            }
         </>
     )
 }

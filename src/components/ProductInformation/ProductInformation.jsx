@@ -78,15 +78,18 @@ const ProductInformation = ({ productDetails }) => {
                     <Carousel photos={allPhotos} />
                     <div className="textFrame">
                         <div className="informationFrame">
-                            <h4>Medidas: {productDetails.height} x {productDetails.width}</h4>
+                            {productDetails.height &&
+                                <h4>Medidas: {productDetails.height} x {productDetails.width}</h4>
+                            }
                             {productDetails.prize && (
                                 <h4>Precio: {productDetails.prize}€</h4>
                             )}
 
                         </div>
                         <p className="description">
-                            {chipContent} hecha artesanalmente con {materials} que mide {productDetails.height}cm de altura y {productDetails.width}cm de ancho.
-                            {productDetails.prize && `Tiene un precio de ${productDetails.prize}€`}
+                            {chipContent} hecha artesanalmente con {materials}
+                            {productDetails.height && `que mide ${productDetails.height}cm de altura y ${productDetails.width}cm de ancho`}
+                            {productDetails.prize && `. Tiene un precio de ${productDetails.prize}€`}
                         </p>
 
 
