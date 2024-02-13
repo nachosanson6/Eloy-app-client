@@ -87,7 +87,7 @@ const PicturesGalleryPage = () => {
         if (direction === "prev" && currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1);
             handleScroll();
-        } else if (direction === "next" && currentProducts.length === pageSize) {
+        } else if (direction === "next" && currentPictures.length === pageSize) {
             setCurrentPage((prevPage) => prevPage + 1);
             handleScroll();
         }

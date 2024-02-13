@@ -79,6 +79,12 @@
 }
 
 @media screen and (max-width: 480px) {
+
+    .finder {
+
+        padding: 2.5rem 0.65rem;
+    }
+
     .finder .buttonsFrame {
         justify-content: center;
     }
