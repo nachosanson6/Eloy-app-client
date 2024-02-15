@@ -6,24 +6,24 @@ import { Link } from 'react-router-dom'
 
 
 const Finder = ({ onSearchTermChange }) => {
-    const currentUrl = window.location.pathname;
+    useEffect(() => {
+        const currentUrl = window.location.pathname;
 
-    // Obtener todos los botones
-    const buttons = document.querySelectorAll('.buttonsFrame .btn');
+        // Obtener todos los botones después de que el componente se monte en el DOM
+        const buttons = document.querySelectorAll('.buttonsFrame .btn');
 
-    // Iterar sobre los botones para aplicar la clase activa según la URL
-    buttons.forEach(button => {
-        // Obtener la URL del botón
-        const buttonUrl = button.getAttribute('href');
-        console.log('la url del boton', buttonUrl)
+        // Iterar sobre los botones para aplicar la clase activa según la URL
+        buttons.forEach(button => {
+            // Obtener la URL del botón
+            const buttonUrl = button.getAttribute('href');
 
-        // Verificar si la URL actual coincide con la del botón
-        if (currentUrl === buttonUrl) {
-            // Agregar la clase activa al botón correspondiente
-            button.classList.add('active');
-        }
-    });
-    console.log('la url en la que estamos', currentUrl)
+            // Verificar si la URL actual coincide con la del botón
+            if (currentUrl === buttonUrl) {
+                // Agregar la clase activa al botón correspondiente
+                button.classList.add('active');
+            }
+        });
+    }, []); // Solo se ejecuta una vez después de que el componente se monta en el DOM
 
     return (
         <div className="finder">
