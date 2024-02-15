@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import uploadServices from '../../services/upload.services'
 import jewelryService from '../../services/jewelry.services'
-import MaterialForm from '../JewelryMaterialForm/JewelryMaterialForm'
 import { ModalContext } from '../../contexts/modal.context'
 import { ProductInformationContext } from '../../contexts/productInformation.context'
 
@@ -20,6 +19,23 @@ const JewelryForm = () => {
         const { value, name } = e.target
         setNewJewelryForm({ ...newJewelryForm, [name]: value })
     }
+
+    const handleMaterialAdd = () => {
+        if (newJewelryForm.newMaterial.trim() !== "") {
+            const updatedForm = {
+                ...newJewelryForm,
+                materials: [...newJewelryForm.materials, newJewelryForm.newMaterial],
+                newMaterial: "",
+            };
+            setNewJewelryForm(updatedForm);
+        }
+    };
+
+    const handleMaterialRemove = (index) => {
+        const updatedMaterials = [...newJewelryForm.materials];
+        updatedMaterials.splice(index, 1);
+        setNewJewelryForm({ ...newJewelryForm, materials: updatedMaterials });
+    };
 
     const handleFromSubmit = async (e) => {
         e.preventDefault();
@@ -80,7 +96,34 @@ const JewelryForm = () => {
                         </Form.Group>
                     </Col>
                 </Row>
-                <MaterialForm newJewelryForm={newJewelryForm} setNewJewelryForm={setNewJewelryForm} />
+
+                <Form.Group className="mb-3" controlId="formBasicMaterials">
+                    <Form.Label>Materiales</Form.Label>
+                    <Row>
+                        <Col>
+                            <Form.Control
+                                type="text"
+                                value={newJewelryForm.newMaterial}
+                                onChange={(e) => setNewJewelryForm({ ...newJewelryForm, newMaterial: e.target.value })}
+                            />
+                        </Col>
+                        <Col>
+                            <Button variant="secondary" onClick={handleMaterialAdd}>
+                                +
+                            </Button>
+                        </Col>
+                    </Row>
+                    {newJewelryForm.materials.map((material, index) => (
+                        <Row key={index} className="mt-2">
+                            <Col>{material}</Col>
+                            <Col>
+                                <Button variant="danger" onClick={() => handleMaterialRemove(index)}>
+                                    -
+                                </Button>
+                            </Col>
+                        </Row>
+                    ))}
+                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicSold">
                     <Form.Check

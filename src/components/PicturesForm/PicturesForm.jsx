@@ -50,7 +50,6 @@ const PicturesForm = () => {
             } else {
                 await pictureService.createPicture(newPictureForm);
                 setShowModal(false);  // Cerrar la modal después de crear
-                console.log("cierra la modal!!!!")
                 // Navegar a la galería después de la creación
                 navigate('/picturesGallery');
             }

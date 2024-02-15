@@ -88,7 +88,7 @@ const ProductInformation = ({ productDetails }) => {
                         </div>
                         <p className="description">
                             {chipContent} hecha artesanalmente con {materials}
-                            {productDetails.height && `que mide ${productDetails.height}cm de altura y ${productDetails.width}cm de ancho`}
+                            {productDetails.height && ` que mide ${productDetails.height}cm de altura y ${productDetails.width}cm de ancho`}
                             {productDetails.prize && `. Tiene un precio de ${productDetails.prize}€`}
                         </p>
 

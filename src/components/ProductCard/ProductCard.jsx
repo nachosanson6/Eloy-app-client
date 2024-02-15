@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import "./ProductCard.css"
 
 
-const ProductCard = ({ name, photo, _id, product, height, width, materials, colors, sold }) => {
+const ProductCard = ({ name, photo, _id, prize, product, height, width, materials, colors, sold }) => {
     let chipContent;
     switch (product) {
         case 'Pictures':
@@ -31,6 +31,7 @@ const ProductCard = ({ name, photo, _id, product, height, width, materials, colo
             {height &&
                 <p className="productDetails" >{height} x {width}</p>
             }
+            <p className="productDetails" >{prize}€</p>
         </>
     )
 }
