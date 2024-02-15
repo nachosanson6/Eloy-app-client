@@ -50,8 +50,7 @@ const ProductInformation = ({ productDetails }) => {
             galleryLink = '/jewelryGallery';
             break;
         default:
-            // Si el tipo de producto no coincide con ninguno de los casos anteriores, 
-            // puedes redirigirlo a una página de error o a una galería por defecto
+
             galleryLink = '/defaultGallery';
             break;
     }
@@ -81,8 +80,15 @@ const ProductInformation = ({ productDetails }) => {
                             {productDetails.height &&
                                 <h4>Medidas: {productDetails.height} x {productDetails.width}</h4>
                             }
-                            {productDetails.prize && (
-                                <h4>Precio: {productDetails.prize}€</h4>
+                            {productDetails.sold ? (
+                                <>
+                                    <h4><del>Precio: {productDetails.prize}€</del></h4>
+                                    <h4>Vendido</h4>
+                                </>
+                            ) : (
+                                <>
+                                    <h4>Precio: {productDetails.prize}€</h4>
+                                </>
                             )}
 
                         </div>
