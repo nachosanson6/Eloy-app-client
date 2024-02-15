@@ -15,6 +15,7 @@ const Finder = ({ onSearchTermChange }) => {
     buttons.forEach(button => {
         // Obtener la URL del botón
         const buttonUrl = button.getAttribute('href');
+        console.log('la url del boton', buttonUrl)
 
         // Verificar si la URL actual coincide con la del botón
         if (currentUrl === buttonUrl) {
@@ -22,7 +23,7 @@ const Finder = ({ onSearchTermChange }) => {
             button.classList.add('active');
         }
     });
-
+    console.log('la url en la que estamos', currentUrl)
 
     return (
         <div className="finder">
