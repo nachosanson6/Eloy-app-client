@@ -3,6 +3,7 @@ import filterIcon from './../../images/controls-alt.svg'
 import searchIcon from './../../images/search.svg'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 
 const Finder = ({ onSearchTermChange }) => {
