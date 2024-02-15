@@ -72,6 +72,7 @@
     border: 1px solid #BC9C2E;
 }
 
+.finder .buttonsFrame .btn.active,
 .finder .buttonsFrame .btn:hover {
     border-radius: 4px;
     background: var(--Colors-Gold, #BC9C2E);

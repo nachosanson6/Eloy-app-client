@@ -6,6 +6,24 @@ import { Link } from 'react-router-dom'
 
 
 const Finder = ({ onSearchTermChange }) => {
+    const currentUrl = window.location.pathname;
+
+    // Obtener todos los botones
+    const buttons = document.querySelectorAll('.buttonsFrame .btn');
+
+    // Iterar sobre los botones para aplicar la clase activa según la URL
+    buttons.forEach(button => {
+        // Obtener la URL del botón
+        const buttonUrl = button.getAttribute('href');
+
+        // Verificar si la URL actual coincide con la del botón
+        if (currentUrl === buttonUrl) {
+            // Agregar la clase activa al botón correspondiente
+            button.classList.add('active');
+        }
+    });
+
+
     return (
         <div className="finder">
             <div className="finderContent">
