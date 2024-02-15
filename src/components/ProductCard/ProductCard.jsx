@@ -27,12 +27,14 @@ const ProductCard = ({ name, photo, _id, prize, product, height, width, material
                     <p className="chip">{sold ? "Vendido" : chipContent}</p>
                 </Link>
             </div>
-            <h4 className="productName">{name}</h4>
-            <div className="information">
+            <div className="allInformation">
+                <div className="information">
+                    <h4 className="productName">{name}</h4>
+                    <p className="prize" >{prize}€</p>
+                </div>
                 {height &&
                     <p className="productDetails" >{height} x {width}</p>
                 }
-                <p className="prize" >{prize}€</p>
             </div>
         </div>
     )
