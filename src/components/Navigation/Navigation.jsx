@@ -4,7 +4,7 @@ import PicturesForm from '../PicturesForm/PicturesForm'
 import SculptureForm from '../SculpturesForm/SculptureForm'
 import JewelryForm from '../JewelryForm/JewelryForm'
 import LoginForm from '../LoginForm/LoginForm'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import "./Navigation.css"
 import logoLight from "./../../../src/images/Logotipo Light.svg"
@@ -16,7 +16,8 @@ import { ProductInformationContext } from '../../contexts/productInformation.con
 
 const Navigation = () => {
 
-
+    const location = useLocation();
+    const currentUrl = location.pathname;
     const { logout, loggedUser } = useContext(AuthContext)
     const [isNavbarTransparent, setIsNavigationTransparent] = useState(false)
     const { showContactModal, setShowContactModal } = useContext(ContactModalContext)
@@ -76,9 +77,17 @@ const Navigation = () => {
                     </Navbar.Brand>
                     <Nav className="ms-auto">
                         <div className="element">
-                            <Link to={'/productsGallery'} className='btn'>Galería</Link>
+                            <Link
+                                to={'/productsGallery'}
+                                className={`btn ${currentUrl === '/productsGallery' ||
+                                    currentUrl === '/picturesGallery' ||
+                                    currentUrl === '/sculpturesGallery' ||
+                                    currentUrl === '/jewelryGallery' ? 'active' : ''}`}
+                            >
+                                Galería
+                            </Link>
 
-                            <Link to={'/'} className='btn'>El artista</Link>
+                            <Link to={'/'} className={`btn ${currentUrl === '/' ? 'active' : ''}`}>El artista</Link>
 
                         </div>
 
