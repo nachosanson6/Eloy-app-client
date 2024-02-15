@@ -43,14 +43,11 @@
 .productName {
     color: #000;
     font-feature-settings: 'clig' off, 'liga' off;
-
-    /* Desktop/H4 */
     font-family: "Familjen Grotesk";
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: 1.75rem;
-    /* 116.667% */
 }
 
 .productDetails {
@@ -63,4 +60,21 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.productCard .information {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.productCard .information .prize {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Familjen Grotesk";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.75rem;
+    padding-right: 1.5rem;
 }

@@ -20,7 +20,7 @@ const ProductCard = ({ name, photo, _id, prize, product, height, width, material
     }
 
     return (
-        <>
+        <div className="productCard">
             <div className="card">
                 <Link to={`/productDetails/${_id}`} className="imageLink">
                     <img src={photo} alt="" className="image" />
@@ -28,11 +28,13 @@ const ProductCard = ({ name, photo, _id, prize, product, height, width, material
                 </Link>
             </div>
             <h4 className="productName">{name}</h4>
-            {height &&
-                <p className="productDetails" >{height} x {width}</p>
-            }
-            <p className="productDetails" >{prize}€</p>
-        </>
+            <div className="information">
+                {height &&
+                    <p className="productDetails" >{height} x {width}</p>
+                }
+                <p className="prize" >{prize}€</p>
+            </div>
+        </div>
     )
 }
 export default ProductCard
