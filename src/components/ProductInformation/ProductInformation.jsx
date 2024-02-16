@@ -83,7 +83,7 @@ const ProductInformation = ({ productDetails }) => {
                             {productDetails.sold ? (
                                 <>
                                     <h4><del>Precio: {productDetails.prize}€</del></h4>
-                                    <h4>Vendido</h4>
+
                                 </>
                             ) : (
                                 <>
@@ -97,6 +97,9 @@ const ProductInformation = ({ productDetails }) => {
                             {productDetails.height && ` que mide ${productDetails.height}cm de altura y ${productDetails.width}cm de ancho`}
                             {productDetails.prize && `. Tiene un precio de ${productDetails.prize}€`}
                         </p>
+                        {productDetails.sold &&
+                            <h4>Vendido</h4>
+                        }
 
 
                     </div>
