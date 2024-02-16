@@ -98,7 +98,7 @@ const ProductInformation = ({ productDetails }) => {
                             {productDetails.prize && `. Tiene un precio de ${productDetails.prize}€`}
                         </p>
                         {productDetails.sold &&
-                            <h4>Vendido</h4>
+                            <h4 className='sold'>Vendido</h4>
                         }
 
 
