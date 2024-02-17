@@ -1,3 +1,10 @@
+.loading {
+    display: flex;
+    justify-content: center
+}
+
 .spinner {
+    margin: 1.5rem;
     color: #BC9C2E;
+
 }
