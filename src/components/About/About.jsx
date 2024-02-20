@@ -28,7 +28,6 @@ const About = () => {
                         <br /> <br />
                         Eloy ha encontrado una afición artística que le mantiene distraído, le gusta y disfruta realizándola. Le da una gran satisfacción.
                     </p>
-
                     <button onClick={() => { setShowContactModal(true) }} className='contactButton'>Contactar con Eloy</button>
                 </div>
             </div>
